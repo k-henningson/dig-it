@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeBaseProvider } from 'native-base';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import ProfilePage from './modules/components/ProfilePage';
 import HistoryPage from './modules/components/HistoryPage';
 import TestPage from './modules/components/TestPage';
@@ -9,11 +10,36 @@ import UpgradePage from './modules/components/UpgradePage';
 
 const Tab = createBottomTabNavigator();
 
+const ROUTE_ICONS = {
+    ProfilePage: 'person',
+    HistoryPage: 'list',
+    TestPage: 'add',
+    UpgradePage: 'cafe',
+};
+
 export default function App() {
     return (
         <NativeBaseProvider>
             <NavigationContainer style={styles.container}>
-                <Tab.Navigator>
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                            let iconName = ROUTE_ICONS[route.name];
+                            if (!focused) {
+                                iconName += `-outline`;
+                            }
+                            return (
+                                <Ionicons
+                                    name={iconName}
+                                    size={size}
+                                    color={color}
+                                />
+                            );
+                        },
+                        tabBarActiveTintColor: 'blue',
+                        tabBarInactiveTintColor: 'gray',
+                    })}
+                >
                     <Tab.Screen
                         name="ProfilePage"
                         component={ProfilePage}
