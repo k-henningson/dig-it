@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeBaseProvider } from 'native-base';
+import { StatusBar } from 'expo-status-bar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ProfilePage from './modules/components/ProfilePage';
 import HistoryPage from './modules/components/HistoryPage';
@@ -20,6 +21,7 @@ const ROUTE_ICONS = {
 export default function App() {
     return (
         <NativeBaseProvider>
+            <StatusBar style="auto" />
             <NavigationContainer style={styles.container}>
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
