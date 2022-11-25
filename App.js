@@ -24,13 +24,11 @@ export default function App() {
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
-                            let iconName = ROUTE_ICONS[route.name];
-                            if (!focused) {
-                                iconName += `-outline`;
-                            }
                             return (
                                 <Ionicons
-                                    name={iconName}
+                                    name={`${ROUTE_ICONS[route.name]}${
+                                        !focused ? '-outline' : ''
+                                    }`}
                                     size={size}
                                     color={color}
                                 />
