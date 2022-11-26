@@ -1,15 +1,18 @@
 import { StyleSheet } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeBaseProvider } from 'native-base';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import ProfilePage from './modules/components/ProfilePage';
-import HistoryPage from './modules/components/HistoryPage';
-import TestPage from './modules/components/TestPage';
-import UpgradePage from './modules/components/UpgradePage';
+import ProfilePage from './modules/screens/profile/ProfilePage';
+import HistoryPage from './modules/screens/history/HistoryPage';
+import TestPage from './modules/screens/test/TestPage';
+import UpgradePage from './modules/screens/upgrade/UpgradePage';
 
 const Tab = createBottomTabNavigator();
+SplashScreen.preventAutoHideAsync();
 
 const ROUTE_ICONS = {
     ProfilePage: 'person',
@@ -19,6 +22,13 @@ const ROUTE_ICONS = {
 };
 
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
     return (
         <NativeBaseProvider>
             <StatusBar style="auto" />
@@ -72,5 +82,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        fontFamily: 'Inter-Regular',
     },
 });
