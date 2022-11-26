@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import StyledText from '../../components/StyledText';
 
 export default function UpgradePage() {
     return (
         <View
             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
-            <Text>Upgrade Page</Text>
+            <StyledText>Upgrade Page</StyledText>
         </View>
     );
 }
