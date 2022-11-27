@@ -25,6 +25,7 @@ export default function ProfilePage() {
                     </HStack>
                 </ProfileBox>
                 <ProfileBox>
+                    <StyledText>Temperature</StyledText>
                     <Radio.Group
                         name="temperatureUnits"
                         accessibilityLabel="temperature units"
@@ -44,6 +45,7 @@ export default function ProfilePage() {
                     </Radio.Group>
                 </ProfileBox>
                 <ProfileBox>
+                    <StyledText>Measurement</StyledText>
                     <Radio.Group
                         name="measurementUnits"
                         accessibilityLabel="measurement units"
