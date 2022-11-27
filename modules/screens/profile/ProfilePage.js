@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import { HStack, Switch, Radio } from 'native-base';
+import { HStack, Switch, Radio, Box } from 'native-base';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import StyledText from '../../components/StyledText';
 
 export default function ProfilePage() {
@@ -10,11 +11,25 @@ export default function ProfilePage() {
         <View
             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
-            <HStack alignItems="center" space={4}>
-                <StyledText>Novice</StyledText>
-                <Switch size="md" />
-                <StyledText>Pro</StyledText>
-            </HStack>
+            <Box
+                width="50%"
+                rounded="lg"
+                overflow="hidden"
+                p="12"
+                borderColor="coolGray.300"
+                borderWidth="2"
+                alignItems="center"
+                _web={{
+                    shadow: 2,
+                    borderWidth: 0,
+                }}
+            >
+                <HStack alignItems="center" space={4}>
+                    <StyledText>Novice</StyledText>
+                    <Switch size="md" />
+                    <StyledText>Pro</StyledText>
+                </HStack>
+            </Box>
             <Radio.Group
                 name="temperatureUnits"
                 accessibilityLabel="temperature units"
@@ -54,6 +69,14 @@ export default function ProfilePage() {
                 <Switch size="md" />
                 <StyledText>Dark 🌚</StyledText>
             </HStack>
+            <Box>
+                <StyledText>Get in touch</StyledText>
+                <HStack alignItems="center" space={4}>
+                    <Ionicons name="logo-linkedin" size={24} color="black" />
+                    <Ionicons name="logo-github" size={24} color="black" />
+                    <Ionicons name="mail-open" size={24} color="black" />
+                </HStack>
+            </Box>
         </View>
     );
 }
