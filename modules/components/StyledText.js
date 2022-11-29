@@ -7,7 +7,7 @@ export default function StyledText(props) {
             style={{
                 fontFamily: 'Inter-Regular',
                 fontSize: 30,
-                ...props.style,
+                ...props.styles,
             }}
             {...props}
         >
@@ -18,5 +18,5 @@ export default function StyledText(props) {
 
 StyledText.propTypes = {
     children: PropTypes.node.isRequired,
-    style: PropTypes.object,
+    styles: PropTypes.object,
 };
