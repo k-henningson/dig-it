@@ -6,8 +6,8 @@ import StyledText from '../../components/StyledText';
 import ProfileBox from '../../components/ProfileBox';
 
 export default function ProfilePage() {
-    const [temperature, setTemp] = useState('Fahrenheit');
-    const [measurement, setMeasure] = useState('Imperial');
+    const [temperatureUnits, setTemperatureUnits] = useState('Fahrenheit');
+    const [distanceUnits, setDistanceUnits] = useState('Imperial');
     return (
         <ScrollView>
             <View
@@ -29,10 +29,8 @@ export default function ProfilePage() {
                     <Radio.Group
                         name="temperatureUnits"
                         accessibilityLabel="temperature units"
-                        value={temperature}
-                        onChange={(nextValue) => {
-                            setTemp(nextValue);
-                        }}
+                        value={temperatureUnits}
+                        onChange={setTemperatureUnits}
                     >
                         <HStack alignItems="center" space={4}>
                             <Radio value="Fahrenheit" my={1}>
@@ -49,9 +47,9 @@ export default function ProfilePage() {
                     <Radio.Group
                         name="measurementUnits"
                         accessibilityLabel="measurement units"
-                        value={measurement}
+                        value={distanceUnits}
                         onChange={(nextValue) => {
-                            setMeasure(nextValue);
+                            setDistanceUnits(nextValue);
                         }}
                     >
                         <HStack alignItems="center" space={4}>
