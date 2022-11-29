@@ -1,5 +1,11 @@
+export const THEME_NAMES = {
+    LIGHT: 'light',
+    DARK: 'dark',
+};
+
 export const themes = {
     light: {
+        name: THEME_NAMES.LIGHT,
         foreground: '#000000',
         background: '#eeeeee',
         statusBar: 'dark',
@@ -11,6 +17,7 @@ export const themes = {
         },
     },
     dark: {
+        name: THEME_NAMES.DARK,
         foreground: '#ffffff',
         background: 'black',
         statusBar: 'light',
@@ -21,8 +28,4 @@ export const themes = {
             },
         },
     },
-};
-export const THEME_NAMES = {
-    LIGHT: 'light',
-    DARK: 'dark',
 };

@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,8 +12,7 @@ import HistoryPage from './modules/screens/history/HistoryPage';
 import TestPage from './modules/screens/test/TestPage';
 import UpgradePage from './modules/screens/upgrade/UpgradePage';
 import { ThemeContext } from './commons/initializers';
-import { getTheme } from './commons/utils/theme-utils';
-import { THEME_NAMES } from './commons/constants/themes';
+import { themes } from './commons/constants/themes';
 
 const Tab = createBottomTabNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -26,8 +25,7 @@ const ROUTE_ICONS = {
 };
 
 export default function App() {
-    const [themeName, setThemeName] = useState(THEME_NAMES.LIGHT);
-    const theme = getTheme(themeName);
+    const [theme, setTheme] = useState(themes.light);
     const nativeBaseTheme = extendTheme(theme);
 
     const [fontsLoaded] = useFonts({
@@ -45,7 +43,7 @@ export default function App() {
     }
 
     return (
-        <ThemeContext.Provider value={{ themeName, setThemeName }}>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
             <NativeBaseProvider theme={nativeBaseTheme}>
                 <View style={styles.container} onLayout={onLayoutRootView}>
                     <StatusBar style={theme.statusBar} />
@@ -55,6 +53,7 @@ export default function App() {
                             colors: {
                                 background: theme.background,
                                 card: theme.background,
+                                text: theme.foreground,
                             },
                         }}
                     >

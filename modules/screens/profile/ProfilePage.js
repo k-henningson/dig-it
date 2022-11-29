@@ -4,6 +4,8 @@ import { HStack, Switch, Radio, ScrollView } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import StyledText from '../../components/StyledText/StyledText';
 import ProfileBox from '../../components/ProfileBox';
+import { useTheme } from '../../../commons/hooks/theme';
+import { themes, THEME_NAMES } from '../../../commons/constants/themes';
 
 const MEASUREMENT_UNITS = {
     Fahrenheit: 'Fahrenheit',
@@ -13,9 +15,12 @@ const MEASUREMENT_UNITS = {
 };
 
 export default function ProfilePage() {
+    const { theme, setTheme } = useTheme();
+
     const [temperatureUnits, setTemperatureUnits] = useState(
         MEASUREMENT_UNITS.Fahrenheit
     );
+
     const [distanceUnits, setDistanceUnits] = useState(
         MEASUREMENT_UNITS.Imperial
     );
@@ -59,9 +64,7 @@ export default function ProfilePage() {
                         name="measurementUnits"
                         accessibilityLabel="measurement units"
                         value={distanceUnits}
-                        onChange={(nextValue) => {
-                            setDistanceUnits(nextValue);
-                        }}
+                        onChange={(nextValue) => setDistanceUnits(nextValue)}
                     >
                         <HStack alignItems="center" space={4}>
                             <Radio value={MEASUREMENT_UNITS.Imperial} my={1}>
@@ -76,7 +79,17 @@ export default function ProfilePage() {
                 <ProfileBox>
                     <HStack alignItems="center" space={4}>
                         <StyledText>Light 💡</StyledText>
-                        <Switch size="md" />
+                        <Switch
+                            size="md"
+                            isChecked={theme.name === THEME_NAMES.DARK}
+                            onToggle={() =>
+                                setTheme(
+                                    theme.name === THEME_NAMES.LIGHT
+                                        ? themes.dark
+                                        : themes.light
+                                )
+                            }
+                        />
                         <StyledText>Dark 🌚</StyledText>
                     </HStack>
                 </ProfileBox>
