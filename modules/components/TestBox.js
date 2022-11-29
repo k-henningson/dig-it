@@ -1,9 +1,9 @@
-import { Box } from 'native-base';
+import { Button } from 'native-base';
 import PropTypes from 'prop-types';
 
 export default function TestBox(props) {
     return (
-        <Box
+        <Button
             width="50%"
             rounded="lg"
             overflow="hidden"
@@ -18,7 +18,7 @@ export default function TestBox(props) {
             }}
         >
             {props.children}
-        </Box>
+        </Button>
     );
 }
 
