@@ -5,9 +5,20 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import StyledText from '../../components/StyledText';
 import ProfileBox from '../../components/ProfileBox';
 
+const MEASUREMENT_UNITS = {
+    Fahrenheit: 'Fahrenheit',
+    Imperial: 'Imperial',
+    Celsius: 'Celsius',
+    Metric: 'Metric',
+};
+
 export default function ProfilePage() {
-    const [temperatureUnits, setTemperatureUnits] = useState('Fahrenheit');
-    const [distanceUnits, setDistanceUnits] = useState('Imperial');
+    const [temperatureUnits, setTemperatureUnits] = useState(
+        MEASUREMENT_UNITS.Fahrenheit
+    );
+    const [distanceUnits, setDistanceUnits] = useState(
+        MEASUREMENT_UNITS.Imperial
+    );
     return (
         <ScrollView>
             <View
@@ -33,11 +44,11 @@ export default function ProfilePage() {
                         onChange={setTemperatureUnits}
                     >
                         <HStack alignItems="center" space={4}>
-                            <Radio value="Fahrenheit" my={1}>
-                                Fahrenheit
+                            <Radio value={MEASUREMENT_UNITS.Fahrenheit} my={1}>
+                                {MEASUREMENT_UNITS.Fahrenheit}
                             </Radio>
-                            <Radio value="Celsius" my={1}>
-                                Celsius
+                            <Radio value={MEASUREMENT_UNITS.Celsius} my={1}>
+                                {MEASUREMENT_UNITS.Celsius}
                             </Radio>
                         </HStack>
                     </Radio.Group>
@@ -53,11 +64,11 @@ export default function ProfilePage() {
                         }}
                     >
                         <HStack alignItems="center" space={4}>
-                            <Radio value="Imperial" my={1}>
-                                Imperial
+                            <Radio value={MEASUREMENT_UNITS.Imperial} my={1}>
+                                {MEASUREMENT_UNITS.Imperial}
                             </Radio>
-                            <Radio value="Metric" my={1}>
-                                Metric
+                            <Radio value={MEASUREMENT_UNITS.Metric} my={1}>
+                                {MEASUREMENT_UNITS.Metric}
                             </Radio>
                         </HStack>
                     </Radio.Group>
