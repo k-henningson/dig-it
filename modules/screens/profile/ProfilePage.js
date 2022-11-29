@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import StyledText from '../../components/StyledText';
+import StyledText from '../../components/StyledText/StyledText';
 
 export default function ProfilePage() {
     return (
