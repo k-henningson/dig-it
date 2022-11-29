@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from 'react';
+import { useCallback, useReducer, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,10 +11,9 @@ import ProfilePage from './modules/screens/profile/ProfilePage';
 import HistoryPage from './modules/screens/history/HistoryPage';
 import TestPage from './modules/screens/test/TestPage';
 import UpgradePage from './modules/screens/upgrade/UpgradePage';
-import { AppContext } from './commons/initializers';
-import { reducer } from './commons/reducers/themeReducer';
+import { ThemeContext } from './commons/initializers';
 import { getTheme } from './commons/utils/theme-utils';
-import { initialState } from './commons/constants/state';
+import { THEME_NAMES } from './commons/constants/themes';
 
 const Tab = createBottomTabNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -27,8 +26,8 @@ const ROUTE_ICONS = {
 };
 
 export default function App() {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const theme = getTheme(state.themeName);
+    const [themeName, setThemeName] = useState(THEME_NAMES.LIGHT);
+    const theme = getTheme(themeName);
     const nativeBaseTheme = extendTheme(theme);
 
     const [fontsLoaded] = useFonts({
@@ -46,7 +45,7 @@ export default function App() {
     }
 
     return (
-        <AppContext.Provider value={{ ...state, dispatch }}>
+        <ThemeContext.Provider value={{ themeName, setThemeName }}>
             <NativeBaseProvider theme={nativeBaseTheme}>
                 <View style={styles.container} onLayout={onLayoutRootView}>
                     <StatusBar style={theme.statusBar} />
@@ -100,7 +99,7 @@ export default function App() {
                     </NavigationContainer>
                 </View>
             </NativeBaseProvider>
-        </AppContext.Provider>
+        </ThemeContext.Provider>
     );
 }
 

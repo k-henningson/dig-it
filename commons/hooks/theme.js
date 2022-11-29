@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { AppContext } from '../initializers';
+import { ThemeContext } from '../initializers';
 import { themes } from '../constants/themes';
 
 export const useTheme = () => {
-    const { themeName } = useContext(AppContext);
+    const { themeName } = useContext(ThemeContext);
     const theme = themes[themeName];
     return { theme };
 };
