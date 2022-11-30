@@ -37,8 +37,46 @@ export default function TestBox(props) {
                                 alignItems="center"
                                 justifyContent="space-between"
                             >
-                                <Text fontWeight="medium">Taps</Text>
-                                <Text color="blueGray.400">Input slider</Text>
+                                <Text fontWeight="medium">CTV</Text>
+                                <Text color="blueGray.400">
+                                    0 taps: Very Easy
+                                </Text>
+                            </HStack>
+                            <HStack
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Text fontWeight="medium">CTE</Text>
+                                <Text color="blueGray.400">
+                                    1-10 taps: Easy
+                                </Text>
+                            </HStack>
+                            <HStack
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Text fontWeight="medium">CTM</Text>
+                                <Text color="blueGray.400">
+                                    11-20 taps: Moderate
+                                </Text>
+                            </HStack>
+                            <HStack
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Text fontWeight="medium">CTH</Text>
+                                <Text color="blueGray.400">
+                                    21-30 taps: Hard
+                                </Text>
+                            </HStack>
+                            <HStack
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Text fontWeight="medium">CTN</Text>
+                                <Text color="blueGray.400">
+                                    No fracture: No result
+                                </Text>
                             </HStack>
                         </VStack>
                     </Modal.Body>
