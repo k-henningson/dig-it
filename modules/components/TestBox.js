@@ -1,6 +1,7 @@
 import { Button, Modal, VStack, Text, HStack, Pressable } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import StyledText from './StyledText';
 
 export default function TestBox(props) {
     const [showModal, setShowModal] = useState(false);
@@ -37,17 +38,32 @@ export default function TestBox(props) {
                                 alignItems="center"
                                 justifyContent="space-between"
                             >
-                                <Text fontWeight="medium">CTV</Text>
-                                <Text color="blueGray.400">
-                                    0 taps: Very Easy
-                                </Text>
+                                <Pressable
+                                    width="90%"
+                                    rounded="lg"
+                                    overflow="hidden"
+                                    p="2"
+                                    my="3"
+                                    borderColor="coolGray.300"
+                                    borderWidth="2"
+                                    alignItems="center"
+                                    _web={{
+                                        shadow: 2,
+                                        borderWidth: 0,
+                                    }}
+                                >
+                                    <Text fontWeight="medium">CTV</Text>
+                                    <Text color="blueGray.600">
+                                        0 taps: Very Easy
+                                    </Text>
+                                </Pressable>
                             </HStack>
                             <HStack
                                 alignItems="center"
                                 justifyContent="space-between"
                             >
                                 <Text fontWeight="medium">CTE</Text>
-                                <Text color="blueGray.400">
+                                <Text color="blueGray.600">
                                     1-10 taps: Easy
                                 </Text>
                             </HStack>
@@ -56,7 +72,7 @@ export default function TestBox(props) {
                                 justifyContent="space-between"
                             >
                                 <Text fontWeight="medium">CTM</Text>
-                                <Text color="blueGray.400">
+                                <Text color="blueGray.600">
                                     11-20 taps: Moderate
                                 </Text>
                             </HStack>
@@ -65,7 +81,7 @@ export default function TestBox(props) {
                                 justifyContent="space-between"
                             >
                                 <Text fontWeight="medium">CTH</Text>
-                                <Text color="blueGray.400">
+                                <Text color="blueGray.600">
                                     21-30 taps: Hard
                                 </Text>
                             </HStack>
@@ -74,7 +90,7 @@ export default function TestBox(props) {
                                 justifyContent="space-between"
                             >
                                 <Text fontWeight="medium">CTN</Text>
-                                <Text color="blueGray.400">
+                                <Text color="blueGray.600">
                                     No fracture: No result
                                 </Text>
                             </HStack>
