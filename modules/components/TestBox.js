@@ -1,7 +1,6 @@
 import { Button, Modal, VStack, Text, HStack, Pressable } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import StyledText from './StyledText';
 
 export default function TestBox(props) {
     const [showModal, setShowModal] = useState(false);
