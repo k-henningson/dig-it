@@ -1,9 +1,18 @@
 import { View } from 'react-native';
-import { HStack, ScrollView } from 'native-base';
+import { ScrollView } from 'native-base';
 import StyledText from '../../components/StyledText/StyledText';
 import TestBox from '../../components/TestBox';
 
 export default function TestPage() {
+    const testTypes = [
+        { name: 'Compression Test (CT)' },
+        { name: 'Deep Tap Test (DT)' },
+        { name: 'Extended Column Test (ECT)' },
+        { name: 'Rutschblock Test (RB)' },
+        { name: 'Propagation Saw Test (PST)' },
+        { name: 'Shovel Shear Test (ST)' },
+        { name: 'Hand Shear Test (HT)' },
+    ];
     return (
         <ScrollView>
             <View
@@ -13,38 +22,13 @@ export default function TestPage() {
                     justifyContent: 'center',
                 }}
             >
-                <HStack>
-                    <TestBox>
-                        <StyledText>Compression Test (CT)</StyledText>
-                    </TestBox>
-                    <TestBox>
-                        <StyledText>Deep Tap Test (DT)</StyledText>
-                    </TestBox>
-                </HStack>
-                <HStack>
-                    <TestBox>
-                        <StyledText>Extended Column Test (ECT)</StyledText>
-                    </TestBox>
-                    <TestBox>
-                        <StyledText>Rutschblock Test (RB)</StyledText>
-                    </TestBox>
-                </HStack>
-                <HStack>
-                    <TestBox>
-                        <StyledText>Propagation Saw Test (PST)</StyledText>
-                    </TestBox>
-                    <TestBox>
-                        <StyledText>Shovel Shear Test (ST)</StyledText>
-                    </TestBox>
-                </HStack>
-                <HStack>
-                    <TestBox>
-                        <StyledText>Hand Shear Test (HT)</StyledText>
-                    </TestBox>
-                    <TestBox>
-                        <StyledText>Empty remove later</StyledText>
-                    </TestBox>
-                </HStack>
+                {testTypes.map((test, index) => {
+                    return (
+                        <TestBox key={index}>
+                            <StyledText>{test.name}</StyledText>
+                        </TestBox>
+                    );
+                })}
             </View>
         </ScrollView>
     );

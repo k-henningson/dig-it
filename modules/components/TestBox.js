@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export default function TestBox(props) {
+    const test = [
+        { header: 'CTV', subHeader: '0 taps: Very Easy' },
+        { header: 'CTE', subHeader: '1-10 taps: Easy' },
+        { header: 'CTM', subHeader: '11-20 taps: Moderate' },
+        { header: 'CTH', subHeader: '21-30 taps: Hard' },
+        { header: 'CTN', subHeader: 'No fracture: No result' },
+    ];
     const [showModal, setShowModal] = useState(false);
     return (
         <>
