@@ -2,12 +2,28 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { HStack, Switch, Radio, ScrollView } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import StyledText from '../../components/StyledText';
+import StyledText from '../../components/StyledText/StyledText';
 import ProfileBox from '../../components/ProfileBox';
+import { useTheme } from '../../../commons/hooks/theme';
+import { themes, THEME_NAMES } from '../../../commons/constants/themes';
+
+const MEASUREMENT_UNITS = {
+    Fahrenheit: 'Fahrenheit',
+    Imperial: 'Imperial',
+    Celsius: 'Celsius',
+    Metric: 'Metric',
+};
 
 export default function ProfilePage() {
-    const [temperature, setTemp] = useState('Fahrenheit');
-    const [measurement, setMeasure] = useState('Imperial');
+    const { theme, setTheme } = useTheme();
+
+    const [temperatureUnits, setTemperatureUnits] = useState(
+        MEASUREMENT_UNITS.Fahrenheit
+    );
+
+    const [distanceUnits, setDistanceUnits] = useState(
+        MEASUREMENT_UNITS.Imperial
+    );
     return (
         <ScrollView>
             <View
@@ -29,17 +45,15 @@ export default function ProfilePage() {
                     <Radio.Group
                         name="temperatureUnits"
                         accessibilityLabel="temperature units"
-                        value={temperature}
-                        onChange={(nextValue) => {
-                            setTemp(nextValue);
-                        }}
+                        value={temperatureUnits}
+                        onChange={setTemperatureUnits}
                     >
                         <HStack alignItems="center" space={4}>
-                            <Radio value="Fahrenheit" my={1}>
-                                Fahrenheit
+                            <Radio value={MEASUREMENT_UNITS.Fahrenheit} my={1}>
+                                {MEASUREMENT_UNITS.Fahrenheit}
                             </Radio>
-                            <Radio value="Celsius" my={1}>
-                                Celsius
+                            <Radio value={MEASUREMENT_UNITS.Celsius} my={1}>
+                                {MEASUREMENT_UNITS.Celsius}
                             </Radio>
                         </HStack>
                     </Radio.Group>
@@ -49,17 +63,15 @@ export default function ProfilePage() {
                     <Radio.Group
                         name="measurementUnits"
                         accessibilityLabel="measurement units"
-                        value={measurement}
-                        onChange={(nextValue) => {
-                            setMeasure(nextValue);
-                        }}
+                        value={distanceUnits}
+                        onChange={(nextValue) => setDistanceUnits(nextValue)}
                     >
                         <HStack alignItems="center" space={4}>
-                            <Radio value="Imperial" my={1}>
-                                Imperial
+                            <Radio value={MEASUREMENT_UNITS.Imperial} my={1}>
+                                {MEASUREMENT_UNITS.Imperial}
                             </Radio>
-                            <Radio value="Metric" my={1}>
-                                Metric
+                            <Radio value={MEASUREMENT_UNITS.Metric} my={1}>
+                                {MEASUREMENT_UNITS.Metric}
                             </Radio>
                         </HStack>
                     </Radio.Group>
@@ -67,7 +79,17 @@ export default function ProfilePage() {
                 <ProfileBox>
                     <HStack alignItems="center" space={4}>
                         <StyledText>Light 💡</StyledText>
-                        <Switch size="md" />
+                        <Switch
+                            size="md"
+                            isChecked={theme.name === THEME_NAMES.DARK}
+                            onToggle={() =>
+                                setTheme(
+                                    theme.name === THEME_NAMES.LIGHT
+                                        ? themes.dark
+                                        : themes.light
+                                )
+                            }
+                        />
                         <StyledText>Dark 🌚</StyledText>
                     </HStack>
                 </ProfileBox>

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { HStack, ScrollView } from 'native-base';
-import StyledText from '../../components/StyledText';
+import StyledText from '../../components/StyledText/StyledText';
 import TestBox from '../../components/TestBox';
 
 export default function TestPage() {
