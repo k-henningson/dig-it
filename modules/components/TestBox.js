@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export default function TestBox(props) {
-    const test = [
+    const testTapOptions = [
         { header: 'CTV', subHeader: '0 taps: Very Easy' },
         { header: 'CTE', subHeader: '1-10 taps: Easy' },
         { header: 'CTM', subHeader: '11-20 taps: Moderate' },
@@ -39,68 +39,38 @@ export default function TestBox(props) {
                     <Modal.CloseButton />
                     <Modal.Header>{props.children}</Modal.Header>
                     <Modal.Body>
-                        <VStack space={3}>
-                            <HStack
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Pressable
-                                    width="90%"
-                                    rounded="lg"
-                                    overflow="hidden"
-                                    p="2"
-                                    my="3"
-                                    borderColor="coolGray.300"
-                                    borderWidth="2"
-                                    alignItems="center"
-                                    _web={{
-                                        shadow: 2,
-                                        borderWidth: 0,
-                                    }}
-                                >
-                                    <Text fontWeight="medium">CTV</Text>
-                                    <Text color="blueGray.600">
-                                        0 taps: Very Easy
-                                    </Text>
-                                </Pressable>
-                            </HStack>
-                            <HStack
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Text fontWeight="medium">CTE</Text>
-                                <Text color="blueGray.600">
-                                    1-10 taps: Easy
-                                </Text>
-                            </HStack>
-                            <HStack
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Text fontWeight="medium">CTM</Text>
-                                <Text color="blueGray.600">
-                                    11-20 taps: Moderate
-                                </Text>
-                            </HStack>
-                            <HStack
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Text fontWeight="medium">CTH</Text>
-                                <Text color="blueGray.600">
-                                    21-30 taps: Hard
-                                </Text>
-                            </HStack>
-                            <HStack
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Text fontWeight="medium">CTN</Text>
-                                <Text color="blueGray.600">
-                                    No fracture: No result
-                                </Text>
-                            </HStack>
-                        </VStack>
+                        {testTapOptions.map((test, index) => {
+                            return (
+                                <VStack space={3} key={index}>
+                                    <HStack
+                                        alignItems="center"
+                                        justifyContent="space-between"
+                                    >
+                                        <Pressable
+                                            width="90%"
+                                            rounded="lg"
+                                            overflow="hidden"
+                                            p="2"
+                                            my="3"
+                                            borderColor="coolGray.300"
+                                            borderWidth="2"
+                                            alignItems="center"
+                                            _web={{
+                                                shadow: 2,
+                                                borderWidth: 0,
+                                            }}
+                                        >
+                                            <Text fontWeight="medium">
+                                                {test.header}
+                                            </Text>
+                                            <Text color="blueGray.600">
+                                                {test.subHeader}
+                                            </Text>
+                                        </Pressable>
+                                    </HStack>
+                                </VStack>
+                            );
+                        })}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button.Group space={2}>
