@@ -2,14 +2,15 @@ import { Button, Modal, VStack, Text, HStack, Pressable } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
+const testTapOptions = [
+    { header: 'CTV', subHeader: '0 taps: Very Easy' },
+    { header: 'CTE', subHeader: '1-10 taps: Easy' },
+    { header: 'CTM', subHeader: '11-20 taps: Moderate' },
+    { header: 'CTH', subHeader: '21-30 taps: Hard' },
+    { header: 'CTN', subHeader: 'No fracture: No result' },
+];
+
 export default function TestBox(props) {
-    const testTapOptions = [
-        { header: 'CTV', subHeader: '0 taps: Very Easy' },
-        { header: 'CTE', subHeader: '1-10 taps: Easy' },
-        { header: 'CTM', subHeader: '11-20 taps: Moderate' },
-        { header: 'CTH', subHeader: '21-30 taps: Hard' },
-        { header: 'CTN', subHeader: 'No fracture: No result' },
-    ];
     const [showModal, setShowModal] = useState(false);
     return (
         <>
@@ -77,17 +78,11 @@ export default function TestBox(props) {
                             <Button
                                 variant="ghost"
                                 colorScheme="blueGray"
-                                onPress={() => {
-                                    setShowModal(false);
-                                }}
+                                onPress={() => setShowModal(false)}
                             >
                                 Cancel
                             </Button>
-                            <Button
-                                onPress={() => {
-                                    setShowModal(false);
-                                }}
-                            >
+                            <Button onPress={() => setShowModal(false)}>
                                 Next
                             </Button>
                         </Button.Group>
