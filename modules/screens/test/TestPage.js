@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { ScrollView } from 'native-base';
 import StyledText from '../../components/StyledText/StyledText';
-import TestBox from '../../components/TestBox';
+import TestBox from './TestBox';
 
 const tests = [
     'Compression Test (CT)',
