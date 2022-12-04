@@ -26,7 +26,7 @@ export default function TestPage() {
             >
                 {tests.map((test, index) => {
                     return (
-                        <TestBox key={index}>
+                        <TestBox key={index} header={test}>
                             <View
                                 style={{
                                     display: 'flex',
