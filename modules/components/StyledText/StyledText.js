@@ -8,8 +8,7 @@ export default function StyledText(props) {
         <Text
             color={theme.foreground}
             style={{
-                fontFamily: 'Inter-Regular',
-                fontSize: 30,
+                fontSize: 20,
                 ...props.styles,
             }}
             {...props}

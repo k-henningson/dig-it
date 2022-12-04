@@ -30,6 +30,7 @@ export default function App() {
 
     const [fontsLoaded] = useFonts({
         'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
+        'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.otf'),
     });
 
     const onLayoutRootView = useCallback(async () => {
@@ -70,8 +71,18 @@ export default function App() {
                                         />
                                     );
                                 },
-                                tabBarActiveTintColor: 'blue',
+                                tabBarActiveTintColor:
+                                    theme.colors.primary['100'],
                                 tabBarInactiveTintColor: 'gray',
+                                headerTitleAlign: 'left',
+                                headerStyle: {
+                                    borderBottomWidth: 0,
+                                    shadowOpacity: 0.2,
+                                },
+                                headerTitleStyle: {
+                                    fontSize: 30,
+                                    fontWeight: 'bold',
+                                },
                             })}
                         >
                             <Tab.Screen

@@ -49,7 +49,11 @@ export default function ProfilePage() {
                         onChange={setTemperatureUnits}
                     >
                         <HStack alignItems="center" space={4}>
-                            <Radio value={MEASUREMENT_UNITS.Fahrenheit} my={1}>
+                            <Radio
+                                colorScheme="primary"
+                                value={MEASUREMENT_UNITS.Fahrenheit}
+                                my={1}
+                            >
                                 {MEASUREMENT_UNITS.Fahrenheit}
                             </Radio>
                             <Radio value={MEASUREMENT_UNITS.Celsius} my={1}>

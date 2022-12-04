@@ -7,10 +7,10 @@ export default function ProfileBox(props) {
             width="80%"
             rounded="lg"
             overflow="hidden"
-            p="12"
-            my="3"
+            p="10"
+            my="2"
             borderColor="coolGray.300"
-            borderWidth="2"
+            borderWidth="0.9"
             alignItems="center"
             _web={{
                 shadow: 2,
