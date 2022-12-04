@@ -19,14 +19,39 @@ export default function TestPage() {
             <View
                 style={{
                     flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-around',
                 }}
             >
                 {tests.map((test, index) => {
                     return (
                         <TestBox key={index}>
-                            <StyledText>{test}</StyledText>
+                            <View
+                                style={{
+                                    display: 'flex',
+                                }}
+                            >
+                                <StyledText
+                                    fontWeight="600"
+                                    styles={{
+                                        fontSize: 16,
+                                        textAlign: 'left',
+                                        padding: 0,
+                                    }}
+                                >
+                                    {test}
+                                </StyledText>
+                                <StyledText
+                                    styles={{
+                                        fontSize: 12,
+                                        paddingTop: 10,
+                                    }}
+                                >
+                                    This is an example description of a test and
+                                    has to be a certain length
+                                </StyledText>
+                            </View>
                         </TestBox>
                     );
                 })}

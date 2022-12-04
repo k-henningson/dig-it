@@ -16,14 +16,14 @@ export default function TestBox(props) {
         <>
             <Pressable
                 onPress={() => setShowModal(true)}
-                width="50%"
+                width="45%"
+                height="25%"
                 rounded="lg"
                 overflow="hidden"
-                p="12"
-                my="3"
-                borderColor="coolGray.300"
-                borderWidth="2"
-                alignItems="center"
+                p="4"
+                m="2"
+                borderColor="coolGray.200"
+                borderWidth="1"
                 _web={{
                     shadow: 2,
                     borderWidth: 0,
