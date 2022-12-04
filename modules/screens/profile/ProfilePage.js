@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { HStack, Switch, Radio, ScrollView } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import StyledText from '../../components/StyledText/StyledText';
-import ProfileBox from '../../components/ProfileBox';
+import ProfileBox from './ProfileBox';
 import { useTheme } from '../../../commons/hooks/theme';
 import { themes, THEME_NAMES } from '../../../commons/constants/themes';
 

@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { HStack, ScrollView, Divider } from 'native-base';
 import StyledText from '../../components/StyledText/StyledText';
-import HistoryBox from '../../components/HistoryBox';
+import HistoryBox from './HistoryBox';
 
 export default function HistoryPage() {
     return (
