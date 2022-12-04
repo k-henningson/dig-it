@@ -10,8 +10,9 @@ const testTapOptions = [
     { header: 'CTN', subHeader: 'No fracture: No result' },
 ];
 
-export default function TestBox(props) {
+export default function TestBox({ children, header }) {
     const [showModal, setShowModal] = useState(false);
+
     return (
         <>
             <Pressable
@@ -29,7 +30,7 @@ export default function TestBox(props) {
                     borderWidth: 0,
                 }}
             >
-                {props.children}
+                {children}
             </Pressable>
             <Modal
                 isOpen={showModal}
@@ -38,7 +39,7 @@ export default function TestBox(props) {
             >
                 <Modal.Content maxWidth="350">
                     <Modal.CloseButton />
-                    <Modal.Header>{props.children}</Modal.Header>
+                    <Modal.Header>{header}</Modal.Header>
                     <Modal.Body>
                         {testTapOptions.map((test, index) => {
                             return (
@@ -95,4 +96,5 @@ export default function TestBox(props) {
 
 TestBox.propTypes = {
     children: PropTypes.node.isRequired,
+    header: PropTypes.string.isRequired,
 };
