@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { ScrollView } from 'native-base';
 import StyledText from '../../components/StyledText/StyledText';
-import TestBox from '../../components/TestBox';
+import TestBox from './TestBox';
 
 const tests = [
     {
@@ -54,7 +54,7 @@ export default function TestPage() {
             >
                 {tests.map((test, index) => {
                     return (
-                        <TestBox key={index}>
+                        <TestBox key={index} header={test}>
                             <View
                                 style={{
                                     display: 'flex',
