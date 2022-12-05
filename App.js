@@ -72,7 +72,7 @@ export default function App() {
                                     );
                                 },
                                 tabBarActiveTintColor:
-                                    theme.colors.primary['100'],
+                                    theme.colors.primary['600'],
                                 tabBarInactiveTintColor: 'gray',
                                 headerTitleAlign: 'left',
                                 headerStyle: {
