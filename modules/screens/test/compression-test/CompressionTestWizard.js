@@ -4,6 +4,7 @@ import CompressionTestFractureStep from './CompressionTestFractureStep';
 import CompressionTestTapNumberStep from './CompressionTestTapNumberStep';
 import CompressionTestTapsStep from './CompressionTestTapsStep';
 import WeatherTestStep from '../all-tests/WeatherTestStep';
+import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 
 export default function CompressionTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -45,6 +46,11 @@ export default function CompressionTestWizard(props) {
                 canNext={testData.weather !== ''}
                 weather={testData.weather}
                 setWeather={updateByKey('weather')}
+            />
+            <SnowConditionTestStep
+                canNext={testData.snowCondition !== ''}
+                snowCondition={testData.snowCondition}
+                setSnowCondition={updateByKey('snowCondition')}
             />
         </Wizard>
     );
