@@ -1,7 +1,8 @@
 import { Pressable, ScrollView, View } from 'native-base';
 import StyledText from '../../../components/StyledText/StyledText';
+import PropTypes from 'prop-types';
 
-export default function CompressionTestFracture() {
+export default function CompressionTestFractureStep({ fracture, setFracture }) {
     return (
         <ScrollView>
             <View
@@ -41,6 +42,8 @@ export default function CompressionTestFracture() {
                 ].map(({ id, label }) => (
                     <Pressable
                         key={id}
+                        onPress={() => setFracture(label)}
+                        backgroundColor={fracture === label ? 'green.50' : null}
                         width="45%"
                         height="25%"
                         rounded="lg"
@@ -61,3 +64,8 @@ export default function CompressionTestFracture() {
         </ScrollView>
     );
 }
+
+CompressionTestFractureStep.propTypes = {
+    fracture: PropTypes.string.isRequired,
+    setFracture: PropTypes.func.isRequired,
+};

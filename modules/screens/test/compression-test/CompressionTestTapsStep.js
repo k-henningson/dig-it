@@ -8,7 +8,7 @@ const testTapOptions = [
     { name: 'CTN', description: 'No fracture: No result' },
 ];
 
-export default function CompressionTestTaps({ tapResult, setTapResult }) {
+export default function CompressionTestTapsStep({ tapResult, setTapResult }) {
     return testTapOptions.map(({ name, description }, index) => {
         return (
             <ScrollView key={index}>

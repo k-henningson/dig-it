@@ -16,7 +16,7 @@ const TAP_RANGES = {
     },
 };
 
-export default function CompressionTestTapNumber({
+export default function CompressionTestTapNumberStep({
     tapResult,
     tapNumber,
     setTapNumber,
@@ -42,7 +42,7 @@ export default function CompressionTestTapNumber({
     );
 }
 
-CompressionTestTapNumber.propTypes = {
+CompressionTestTapNumberStep.propTypes = {
     tapResult: PropTypes.string.isRequired,
     tapNumber: PropTypes.number,
     setTapNumber: PropTypes.func.isRequired,
