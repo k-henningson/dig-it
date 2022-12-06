@@ -1,24 +1,25 @@
 import { VStack, Pressable, Text, ScrollView } from 'native-base';
 
-const testTapOptions = [
-    { name: 'CTV', description: '0 taps: Very Easy' },
-    { name: 'CTE', description: '1-10 taps: Easy' },
-    { name: 'CTM', description: '11-20 taps: Moderate' },
-    { name: 'CTH', description: '21-30 taps: Hard' },
-    { name: 'CTN', description: 'No fracture: No result' },
+const weatherTestOptions = [
+    { name: 'Sun', description: '☀️' },
+    { name: 'Light clouds', description: '🌤' },
+    { name: 'Cloudy', description: '☁️' },
+    { name: 'Rain', description: '🌧' },
+    { name: 'Fog', description: '🌫' },
+    { name: 'Snow', description: '❄️' },
 ];
 
-export default function CompressionTestTaps({ tapResult, setTapResult }) {
-    return testTapOptions.map(({ name, description }, index) => {
+export default function WeatherTestStep({ weather, setWeather }) {
+    return weatherTestOptions.map(({ name, description }, index) => {
         return (
             <ScrollView key={index}>
                 <VStack alignItems="center" space={3}>
                     <Pressable
-                        onPress={() => setTapResult(name)}
+                        onPress={() => setWeather(name)}
                         width="90%"
                         rounded="lg"
                         overflow="hidden"
-                        backgroundColor={tapResult === name ? 'green.50' : null}
+                        backgroundColor={weather === name ? 'green.50' : null}
                         p="2"
                         my="3"
                         borderColor="coolGray.300"

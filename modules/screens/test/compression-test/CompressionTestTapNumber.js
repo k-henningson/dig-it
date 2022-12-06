@@ -2,10 +2,6 @@ import { Select } from 'native-base';
 import PropTypes from 'prop-types';
 
 const TAP_RANGES = {
-    CTV: {
-        start: 0,
-        end: 0,
-    },
     CTE: {
         start: 1,
         end: 10,
@@ -17,10 +13,6 @@ const TAP_RANGES = {
     CTH: {
         start: 21,
         end: 30,
-    },
-    CTN: {
-        start: null,
-        end: null,
     },
 };
 
