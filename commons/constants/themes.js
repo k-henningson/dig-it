@@ -24,7 +24,7 @@ export const themes = {
                 900: '#0D7DD3',
             },
             green: {
-                50: '#ebf9f2',
+                50: '#d6f3e2',
                 800: '#23b972',
             },
         },
