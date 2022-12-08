@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Wizard from '../wizard/Wizard';
-import CompressionTestFracture from './CompressionTestFracture';
-import CompressionTestTapNumber from './CompressionTestTapNumber';
-import CompressionTestTaps from './CompressionTestTaps';
+import CompressionTestFractureStep from './CompressionTestFractureStep';
+import CompressionTestTapNumberStep from './CompressionTestTapNumberStep';
+import CompressionTestTapsStep from './CompressionTestTapsStep';
+import WeatherTestStep from '../all-tests/WeatherTestStep';
+import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 
 export default function CompressionTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -22,20 +24,34 @@ export default function CompressionTestWizard(props) {
 
     return (
         <Wizard {...props}>
-            <CompressionTestTaps
+            <CompressionTestTapsStep
                 canNext={testData.tapResult !== ''}
                 tapResult={testData.tapResult}
                 setTapResult={updateByKey('tapResult')}
             />
             {shouldSkipTapNumberStep ? null : (
-                <CompressionTestTapNumber
+                <CompressionTestTapNumberStep
                     tapResult={testData.tapResult}
                     canNext={testData.tapNumber !== null}
                     tapNumber={testData.tapNumber}
                     setTapNumber={updateByKey('tapNumber')}
                 />
             )}
-            <CompressionTestFracture />
+            <CompressionTestFractureStep
+                canNext={testData.fractureType !== ''}
+                fracture={testData.fractureType}
+                setFracture={updateByKey('fractureType')}
+            />
+            <WeatherTestStep
+                canNext={testData.weather !== ''}
+                weather={testData.weather}
+                setWeather={updateByKey('weather')}
+            />
+            <SnowConditionTestStep
+                canNext={testData.snowCondition !== ''}
+                snowCondition={testData.snowCondition}
+                setSnowCondition={updateByKey('snowCondition')}
+            />
         </Wizard>
     );
 }

@@ -2,10 +2,6 @@ import { Select } from 'native-base';
 import PropTypes from 'prop-types';
 
 const TAP_RANGES = {
-    CTV: {
-        start: 0,
-        end: 0,
-    },
     CTE: {
         start: 1,
         end: 10,
@@ -18,13 +14,9 @@ const TAP_RANGES = {
         start: 21,
         end: 30,
     },
-    CTN: {
-        start: null,
-        end: null,
-    },
 };
 
-export default function CompressionTestTapNumber({
+export default function CompressionTestTapNumberStep({
     tapResult,
     tapNumber,
     setTapNumber,
@@ -50,7 +42,7 @@ export default function CompressionTestTapNumber({
     );
 }
 
-CompressionTestTapNumber.propTypes = {
+CompressionTestTapNumberStep.propTypes = {
     tapResult: PropTypes.string.isRequired,
     tapNumber: PropTypes.number,
     setTapNumber: PropTypes.func.isRequired,
