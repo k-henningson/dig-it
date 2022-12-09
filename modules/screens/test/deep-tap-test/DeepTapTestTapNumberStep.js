@@ -1,5 +1,6 @@
 import { Select } from 'native-base';
 import PropTypes from 'prop-types';
+import { numbers } from '../../../../commons/utils/numbers-utils';
 
 const TAP_RANGES = {
     DTE: {
@@ -21,21 +22,13 @@ export default function DeepTapTestTapNumberStep({
     tapNumber,
     setTapNumber,
 }) {
-    const numbers = () => {
-        const { start, end } = TAP_RANGES[tapResult];
-        let nums = [];
-        for (let i = start; i <= end; i++) {
-            nums.push(i);
-        }
-        return nums;
-    };
     return (
         <Select
             selectedValue={tapNumber}
             onValueChange={setTapNumber}
             placeholder="Pick a number"
         >
-            {numbers().map((num) => (
+            {numbers(TAP_RANGES[tapResult]).map((num) => (
                 <Select.Item key={num} label={num.toString()} value={num} />
             ))}
         </Select>
