@@ -1,4 +1,5 @@
-import { VStack, Pressable, Text, ScrollView } from 'native-base';
+import { VStack, Pressable, ScrollView } from 'native-base';
+import StyledText from '../../../components/StyledText/StyledText';
 
 const weatherTestOptions = [
     { name: 'Sun', description: '☀️' },
@@ -30,8 +31,10 @@ export default function WeatherTestStep({ weather, setWeather }) {
                             borderWidth: 0,
                         }}
                     >
-                        <Text fontWeight="medium">{name}</Text>
-                        <Text color="blueGray.600">{description}</Text>
+                        <StyledText fontWeight="medium">{name}</StyledText>
+                        <StyledText color="blueGray.600">
+                            {description}
+                        </StyledText>
                     </Pressable>
                 </VStack>
             </ScrollView>

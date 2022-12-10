@@ -1,4 +1,5 @@
-import { VStack, Pressable, Text, ScrollView } from 'native-base';
+import { VStack, Pressable, ScrollView } from 'native-base';
+import StyledText from '../../../components/StyledText/StyledText';
 
 const snowConditionTestOptions = [
     { name: 'Dumping', description: '💩' },
@@ -37,8 +38,10 @@ export default function SnowConditionTestStep({
                             borderWidth: 0,
                         }}
                     >
-                        <Text fontWeight="medium">{name}</Text>
-                        <Text color="blueGray.600">{description}</Text>
+                        <StyledText fontWeight="medium">{name}</StyledText>
+                        <StyledText color="blueGray.600">
+                            {description}
+                        </StyledText>
                     </Pressable>
                 </VStack>
             </ScrollView>
