@@ -1,4 +1,3 @@
-import StyledText from '../StyledText/StyledText';
 import { Pressable } from 'native-base';
 import PropTypes from 'prop-types';
 
@@ -7,20 +6,20 @@ export default function CustomPressable(props) {
         <Pressable
             onPress={props.onPress}
             backgroundColor={props.isSelected ? 'green.50' : null}
-            width="45%"
-            height="25%"
+            width="90%"
             rounded="lg"
             overflow="hidden"
-            p="4"
-            m="2"
-            borderColor="coolGray.200"
-            borderWidth="1"
+            p="2"
+            my="3"
+            borderColor="coolGray.300"
+            borderWidth="2"
+            alignItems="center"
             _web={{
                 shadow: 2,
                 borderWidth: 0,
             }}
         >
-            <StyledText>{props.children}</StyledText>
+            {props.children}
         </Pressable>
     );
 }

@@ -1,4 +1,5 @@
-import { VStack, Pressable, ScrollView } from 'native-base';
+import { VStack, ScrollView } from 'native-base';
+import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 import StyledText from '../../../components/StyledText/StyledText';
 
 const testTapOptions = [
@@ -14,27 +15,15 @@ export default function CompressionTestTapsStep({ tapResult, setTapResult }) {
         return (
             <ScrollView key={index}>
                 <VStack alignItems="center" space={3}>
-                    <Pressable
+                    <CustomPressable
                         onPress={() => setTapResult(name)}
-                        width="90%"
-                        rounded="lg"
-                        overflow="hidden"
-                        backgroundColor={tapResult === name ? 'green.50' : null}
-                        p="2"
-                        my="3"
-                        borderColor="coolGray.300"
-                        borderWidth="2"
-                        alignItems="center"
-                        _web={{
-                            shadow: 2,
-                            borderWidth: 0,
-                        }}
+                        isSelected={tapResult === name ? 'green.50' : null}
                     >
                         <StyledText fontWeight="medium">{name}</StyledText>
                         <StyledText color="blueGray.600">
                             {description}
                         </StyledText>
-                    </Pressable>
+                    </CustomPressable>
                 </VStack>
             </ScrollView>
         );
