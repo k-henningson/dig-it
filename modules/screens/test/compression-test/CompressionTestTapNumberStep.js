@@ -1,6 +1,6 @@
 import { Select } from 'native-base';
 import PropTypes from 'prop-types';
-import { numbers } from '../../../../commons/utils/numbers-utils';
+import { generateNumberRange } from '../../../../commons/utils/numbers-utils';
 
 const TAP_RANGES = {
     CTE: {
@@ -28,7 +28,7 @@ export default function CompressionTestTapNumberStep({
             onValueChange={setTapNumber}
             placeholder="Pick a number"
         >
-            {numbers(TAP_RANGES[tapResult]).map((num) => (
+            {generateNumberRange(TAP_RANGES[tapResult]).map((num) => (
                 <Select.Item key={num} label={num.toString()} value={num} />
             ))}
         </Select>
