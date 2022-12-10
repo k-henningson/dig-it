@@ -1,6 +1,7 @@
 import { VStack, ScrollView } from 'native-base';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 import StyledText from '../../../components/StyledText/StyledText';
+import PropTypes from 'prop-types';
 
 const testTapOptions = [
     { name: 'CTV', description: '0 taps: Very Easy' },
@@ -11,21 +12,27 @@ const testTapOptions = [
 ];
 
 export default function CompressionTestTapsStep({ tapResult, setTapResult }) {
-    return testTapOptions.map(({ name, description }, index) => {
-        return (
-            <ScrollView key={index}>
-                <VStack alignItems="center" space={3}>
+    return (
+        <ScrollView>
+            <VStack alignItems="center" space={3}>
+                {testTapOptions.map(({ name, description }, index) => (
                     <CustomPressable
+                        key={index}
                         onPress={() => setTapResult(name)}
-                        isSelected={tapResult === name ? 'green.50' : null}
+                        isSelected={tapResult === name}
                     >
                         <StyledText fontWeight="medium">{name}</StyledText>
                         <StyledText color="blueGray.600">
                             {description}
                         </StyledText>
                     </CustomPressable>
-                </VStack>
-            </ScrollView>
-        );
-    });
+                ))}
+            </VStack>
+        </ScrollView>
+    );
 }
+
+CompressionTestTapsStep.propTypes = {
+    tapResult: PropTypes.string.isRequired,
+    setTapResult: PropTypes.func.isRequired,
+};

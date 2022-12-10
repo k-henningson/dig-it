@@ -34,14 +34,7 @@ const testFractureOptions = [
 export default function DeepTapTestFractureStep({ fracture, setFracture }) {
     return (
         <ScrollView>
-            <VStack
-                style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                }}
-            >
+            <VStack alignItems="center" space={3}>
                 {testFractureOptions.map(({ id, label }) => (
                     <CustomPressable
                         key={id}
