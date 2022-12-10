@@ -1,7 +1,8 @@
-import { Modal, Button, View, Progress, Center, Box } from 'native-base';
+import { Modal, Button, View, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import StyledText from '../../../components/StyledText/StyledText';
+import ProgressBar from './ProgressBar';
 
 export default function Wizard({
     isVisible,
@@ -21,16 +22,14 @@ export default function Wizard({
 
     const currentStep = stepsWithFinalStep[currentStepIndex];
 
+    const isLastStep = currentStepIndex === stepsWithFinalStep.length - 1;
+
     const incrementStep = () => setCurrentStepIndex((index) => (index += 1));
 
     const handleBack = () =>
         currentStepIndex === 0
             ? handleClose()
             : setCurrentStepIndex((index) => (index -= 1));
-
-    const isLastStep = currentStepIndex === stepsWithFinalStep.length - 1;
-
-    const progress = (currentStepIndex / (stepsWithFinalStep.length - 1)) * 100;
 
     return (
         <Modal isOpen={isVisible} onClose={handleClose} size="full">
@@ -40,7 +39,10 @@ export default function Wizard({
                 <Modal.Body>
                     <Center w="100%">
                         <Box w="100%">
-                            <Progress value={progress} mx="4" />
+                            <ProgressBar
+                                numerator={currentStepIndex}
+                                denominator={stepsWithFinalStep.length - 1}
+                            />
                         </Box>
                     </Center>
                     {currentStep}
