@@ -22,19 +22,19 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function ProgressBar({ numerator, denominator }) {
+export default function ProgressBar({ currentStep, totalSteps }) {
     const [viewWidth, setViewWidth] = useState(0);
 
-    const progressBarWidthAnimated = useAnimatedStyle(() => {
-        const useClamping = numerator === 0;
-        return {
-            width: withSpring((numerator / denominator) * viewWidth, {
-                overshootClamping: useClamping,
+    const progressBarWidthAnimated = useAnimatedStyle(
+        () => ({
+            width: withSpring((currentStep / totalSteps) * viewWidth, {
+                overshootClamping: currentStep === 0,
                 damping: 20,
                 mass: 0.7,
             }),
-        };
-    }, [numerator, denominator, viewWidth]);
+        }),
+        [currentStep, totalSteps, viewWidth]
+    );
 
     const progressBarStyles = [styles.progressBar, progressBarWidthAnimated];
 
@@ -49,6 +49,6 @@ export default function ProgressBar({ numerator, denominator }) {
 }
 
 ProgressBar.propTypes = {
-    numerator: PropTypes.number,
-    denominator: PropTypes.number,
+    currentStep: PropTypes.number,
+    totalSteps: PropTypes.number,
 };

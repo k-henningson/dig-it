@@ -40,8 +40,8 @@ export default function Wizard({
                     <Center w="100%">
                         <Box w="100%">
                             <ProgressBar
-                                numerator={currentStepIndex}
-                                denominator={stepsWithFinalStep.length - 1}
+                                currentStep={currentStepIndex}
+                                totalSteps={stepsWithFinalStep.length - 1}
                             />
                         </Box>
                     </Center>
