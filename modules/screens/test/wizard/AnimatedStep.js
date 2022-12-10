@@ -12,7 +12,6 @@ export default function AnimatedStep({ children }) {
                     opacity: 1,
                 }}
                 transition={{
-                    duration: 1200,
                     type: 'timing',
                     opacity: {
                         type: 'spring',
