@@ -31,7 +31,7 @@ const testFractureOptions = [
     },
 ];
 
-export default function CompressionTestFractureStep({ fracture, setFracture }) {
+export default function DeepTapTestFractureStep({ fracture, setFracture }) {
     return (
         <ScrollView>
             <VStack alignItems="center" space={3}>
@@ -49,7 +49,7 @@ export default function CompressionTestFractureStep({ fracture, setFracture }) {
     );
 }
 
-CompressionTestFractureStep.propTypes = {
+DeepTapTestFractureStep.propTypes = {
     fracture: PropTypes.string.isRequired,
     setFracture: PropTypes.func.isRequired,
 };

@@ -3,24 +3,23 @@ import StyledText from '../../../components/StyledText/StyledText';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 import PropTypes from 'prop-types';
 
-const weatherTestOptions = [
-    { name: 'Sun', description: '☀️' },
-    { name: 'Light clouds', description: '🌤' },
-    { name: 'Cloudy', description: '☁️' },
-    { name: 'Rain', description: '🌧' },
-    { name: 'Fog', description: '🌫' },
-    { name: 'Snow', description: '❄️' },
+const testTapOptions = [
+    { name: 'DTV', description: '0 taps: Very Easy' },
+    { name: 'DTE', description: '1-10 taps: Easy' },
+    { name: 'DTM', description: '11-20 taps: Moderate' },
+    { name: 'DTH', description: '21-30 taps: Hard' },
+    { name: 'DTN', description: 'No fracture: No result' },
 ];
 
-export default function WeatherTestStep({ weather, setWeather }) {
+export default function DeepTapTestTapsStep({ tapResult, setTapResult }) {
     return (
         <ScrollView>
             <VStack alignItems="center" space={3}>
-                {weatherTestOptions.map(({ name, description }, index) => (
+                {testTapOptions.map(({ name, description }, index) => (
                     <CustomPressable
                         key={index}
-                        onPress={() => setWeather(name)}
-                        isSelected={weather === name}
+                        onPress={() => setTapResult(name)}
+                        isSelected={tapResult === name}
                     >
                         <StyledText fontWeight="medium">{name}</StyledText>
                         <StyledText color="blueGray.600">
@@ -33,7 +32,7 @@ export default function WeatherTestStep({ weather, setWeather }) {
     );
 }
 
-WeatherTestStep.propTypes = {
-    weather: PropTypes.string.isRequired,
-    setWeather: PropTypes.func.isRequired,
+DeepTapTestTapsStep.propTypes = {
+    tapResult: PropTypes.string.isRequired,
+    setTapResult: PropTypes.func.isRequired,
 };

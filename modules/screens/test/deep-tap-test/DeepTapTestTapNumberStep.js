@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { generateNumberRange } from '../../../../commons/utils/numbers-utils';
 
 const TAP_RANGES = {
-    CTE: {
+    DTE: {
         start: 1,
         end: 10,
     },
-    CTM: {
+    DTM: {
         start: 11,
         end: 20,
     },
-    CTH: {
+    DTH: {
         start: 21,
         end: 30,
     },
 };
 
-export default function CompressionTestTapNumberStep({
+export default function DeepTapTestTapNumberStep({
     tapResult,
     tapNumber,
     setTapNumber,
@@ -35,7 +35,7 @@ export default function CompressionTestTapNumberStep({
     );
 }
 
-CompressionTestTapNumberStep.propTypes = {
+DeepTapTestTapNumberStep.propTypes = {
     tapResult: PropTypes.string.isRequired,
     tapNumber: PropTypes.number,
     setTapNumber: PropTypes.func.isRequired,

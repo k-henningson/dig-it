@@ -1,6 +1,7 @@
-import { Modal, Button, View, Text, Progress, Center, Box } from 'native-base';
+import { Modal, Button, View, Progress, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import StyledText from '../../../components/StyledText/StyledText';
 
 export default function Wizard({
     isVisible,
@@ -14,7 +15,7 @@ export default function Wizard({
     const stepsWithFinalStep = [
         ...children.filter((step) => typeof step === 'object' && step !== null),
         <View key="last-step">
-            <Text style={{ textAlign: 'center' }}>🎉</Text>
+            <StyledText style={{ textAlign: 'center' }}>🎉</StyledText>
         </View>,
     ];
 
