@@ -1,5 +1,7 @@
-import { VStack, Pressable, ScrollView } from 'native-base';
+import { VStack, ScrollView } from 'native-base';
 import StyledText from '../../../components/StyledText/StyledText';
+import CustomPressable from '../../../components/CustomPressable/CustomPressable';
+import PropTypes from 'prop-types';
 
 const weatherTestOptions = [
     { name: 'Sun', description: '☀️' },
@@ -11,33 +13,27 @@ const weatherTestOptions = [
 ];
 
 export default function WeatherTestStep({ weather, setWeather }) {
-    return weatherTestOptions.map(({ name, description }, index) => {
-        return (
-            <ScrollView key={index}>
-                <VStack alignItems="center" space={3}>
-                    <Pressable
+    return (
+        <ScrollView>
+            <VStack alignItems="center" space={3}>
+                {weatherTestOptions.map(({ name, description }, index) => (
+                    <CustomPressable
+                        key={index}
                         onPress={() => setWeather(name)}
-                        width="90%"
-                        rounded="lg"
-                        overflow="hidden"
-                        backgroundColor={weather === name ? 'green.50' : null}
-                        p="2"
-                        my="3"
-                        borderColor="coolGray.300"
-                        borderWidth="2"
-                        alignItems="center"
-                        _web={{
-                            shadow: 2,
-                            borderWidth: 0,
-                        }}
+                        isSelected={weather === name}
                     >
                         <StyledText fontWeight="medium">{name}</StyledText>
                         <StyledText color="blueGray.600">
                             {description}
                         </StyledText>
-                    </Pressable>
-                </VStack>
-            </ScrollView>
-        );
-    });
+                    </CustomPressable>
+                ))}
+            </VStack>
+        </ScrollView>
+    );
 }
+
+WeatherTestStep.propTypes = {
+    weather: PropTypes.string.isRequired,
+    setWeather: PropTypes.func.isRequired,
+};
