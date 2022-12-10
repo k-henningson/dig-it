@@ -1,5 +1,7 @@
-import { VStack, Pressable, ScrollView } from 'native-base';
+import { VStack, ScrollView } from 'native-base';
 import StyledText from '../../../components/StyledText/StyledText';
+import CustomPressable from '../../../components/CustomPressable/CustomPressable';
+import PropTypes from 'prop-types';
 
 const testTapOptions = [
     { name: 'DTV', description: '0 taps: Very Easy' },
@@ -10,33 +12,27 @@ const testTapOptions = [
 ];
 
 export default function DeepTapTestTapsStep({ tapResult, setTapResult }) {
-    return testTapOptions.map(({ name, description }, index) => {
-        return (
-            <ScrollView key={index}>
-                <VStack alignItems="center" space={3}>
-                    <Pressable
+    return (
+        <ScrollView>
+            <VStack alignItems="center" space={3}>
+                {testTapOptions.map(({ name, description }, index) => (
+                    <CustomPressable
+                        key={index}
                         onPress={() => setTapResult(name)}
-                        width="90%"
-                        rounded="lg"
-                        overflow="hidden"
-                        backgroundColor={tapResult === name ? 'green.50' : null}
-                        p="2"
-                        my="3"
-                        borderColor="coolGray.300"
-                        borderWidth="2"
-                        alignItems="center"
-                        _web={{
-                            shadow: 2,
-                            borderWidth: 0,
-                        }}
+                        isSelected={tapResult === name}
                     >
                         <StyledText fontWeight="medium">{name}</StyledText>
                         <StyledText color="blueGray.600">
                             {description}
                         </StyledText>
-                    </Pressable>
-                </VStack>
-            </ScrollView>
-        );
-    });
+                    </CustomPressable>
+                ))}
+            </VStack>
+        </ScrollView>
+    );
 }
+
+DeepTapTestTapsStep.propTypes = {
+    tapResult: PropTypes.string.isRequired,
+    setTapResult: PropTypes.func.isRequired,
+};
