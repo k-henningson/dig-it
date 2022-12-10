@@ -1,6 +1,7 @@
-import { Pressable, ScrollView, View } from 'native-base';
+import { ScrollView, View } from 'native-base';
 import StyledText from '../../../components/StyledText/StyledText';
 import PropTypes from 'prop-types';
+import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 
 export default function CompressionTestFractureStep({ fracture, setFracture }) {
     return (
@@ -40,25 +41,13 @@ export default function CompressionTestFractureStep({ fracture, setFracture }) {
                         icon: '',
                     },
                 ].map(({ id, label }) => (
-                    <Pressable
+                    <CustomPressable
                         key={id}
                         onPress={() => setFracture(label)}
-                        backgroundColor={fracture === label ? 'green.50' : null}
-                        width="45%"
-                        height="25%"
-                        rounded="lg"
-                        overflow="hidden"
-                        p="4"
-                        m="2"
-                        borderColor="coolGray.200"
-                        borderWidth="1"
-                        _web={{
-                            shadow: 2,
-                            borderWidth: 0,
-                        }}
+                        isSelected={fracture === label}
                     >
                         <StyledText>{label}</StyledText>
-                    </Pressable>
+                    </CustomPressable>
                 ))}
             </View>
         </ScrollView>
