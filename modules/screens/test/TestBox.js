@@ -2,6 +2,7 @@ import { Pressable } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import WizardRouter from './wizard/WizardRouter';
+import * as Haptics from 'expo-haptics';
 
 export default function TestBox({ children, test: { label, id } }) {
     const [showModal, setShowModal] = useState(false);
@@ -11,10 +12,15 @@ export default function TestBox({ children, test: { label, id } }) {
         setShowModal(false);
     };
 
+    const handlePress = () => {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        setShowModal(true);
+    };
+
     return (
         <>
             <Pressable
-                onPress={() => setShowModal(true)}
+                onPress={handlePress}
                 width="45%"
                 height="25%"
                 rounded="lg"

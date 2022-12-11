@@ -1,10 +1,16 @@
 import { Pressable } from 'native-base';
 import PropTypes from 'prop-types';
+import * as Haptics from 'expo-haptics';
 
 export default function CustomPressable(props) {
+    const handlePress = (e) => {
+        props.onPress(e);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    };
+
     return (
         <Pressable
-            onPress={props.onPress}
+            onPress={handlePress}
             backgroundColor={props.isSelected ? 'green.50' : null}
             width="90%"
             rounded="lg"
