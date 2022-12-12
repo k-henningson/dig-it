@@ -1,7 +1,7 @@
-import { Modal, Button, View, Center, Box } from 'native-base';
+import { Modal, Button, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import StyledText from '../../../components/StyledText/StyledText';
+import SuccessStep from '../all-tests/SuccessStep';
 import ProgressBar from './ProgressBar';
 
 export default function Wizard({
@@ -15,9 +15,7 @@ export default function Wizard({
 
     const stepsWithFinalStep = [
         ...children.filter((step) => typeof step === 'object' && step !== null),
-        <View key="last-step">
-            <StyledText style={{ textAlign: 'center' }}>🎉</StyledText>
-        </View>,
+        <SuccessStep key="last-step" />,
     ];
 
     const currentStep = stepsWithFinalStep[currentStepIndex];
