@@ -5,6 +5,7 @@ import DeepTapTestTapNumberStep from './DeepTapTestTapNumberStep';
 import DeepTapTestFractureStep from './DeepTapTestFractureStep';
 import WeatherTestStep from '../all-tests/WeatherTestStep';
 import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
+import TitleTestStep from '../all-tests/TitleTestStep';
 
 export default function DeepTapTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -13,6 +14,7 @@ export default function DeepTapTestWizard(props) {
         fractureType: '',
         weather: '',
         snowCondition: '',
+        title: '',
     });
 
     const updateByKey = (key) => (value) => {
@@ -51,6 +53,10 @@ export default function DeepTapTestWizard(props) {
                 canNext={testData.snowCondition !== ''}
                 snowCondition={testData.snowCondition}
                 setSnowCondition={updateByKey('snowCondition')}
+            />
+            <TitleTestStep
+                title={testData.title}
+                setTitle={updateByKey('title')}
             />
         </Wizard>
     );
