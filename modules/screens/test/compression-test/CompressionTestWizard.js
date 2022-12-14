@@ -8,11 +8,6 @@ import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 import TitleTestStep from '../all-tests/TitleTestStep';
 import LocationStep from '../all-tests/LocationStep';
 
-const initialRegion = {
-    latitude: 49.2827,
-    longitude: -123.116226,
-};
-
 export default function CompressionTestWizard(props) {
     const [testData, setTestData] = useState({
         tapResult: '',
@@ -21,10 +16,6 @@ export default function CompressionTestWizard(props) {
         weather: '',
         snowCondition: '',
         title: '',
-        location: {
-            latitude: initialRegion.latitude,
-            longitude: initialRegion.longitude,
-        },
     });
 
     const updateByKey = (key) => (value) => {
@@ -68,10 +59,7 @@ export default function CompressionTestWizard(props) {
                 title={testData.title}
                 setTitle={updateByKey('title')}
             />
-            <LocationStep
-                location={testData.location}
-                setLocation={updateByKey('location')}
-            />
+            <LocationStep />
         </Wizard>
     );
 }

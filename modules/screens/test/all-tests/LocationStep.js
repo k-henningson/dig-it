@@ -2,21 +2,54 @@ import StyledText from '../../../components/StyledText/StyledText';
 import { VStack } from 'native-base';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
 const latitudeDelta = 0.0922;
 const longitudeDelta = 0.0421;
 
-export default function LocationStep({ setLocation, location }) {
+import * as Location from 'expo-location';
+
+export default function LocationStep() {
+    const [location, setLocation] = useState({ coords: {} });
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+        })();
+    }, []);
+
+    let text = 'Finding location...';
+    if (errorMsg) {
+        text = errorMsg;
+    } else if (location.coords.longitude) {
+        text = JSON.stringify(location);
+    }
+
     return (
         <VStack alignItems="center" space={20} marginTop="30px">
-            <StyledText>Location Step</StyledText>
+            <StyledText>Location Step {text}</StyledText>
             <MapView
                 style={styles.map}
-                initialRegion={{ ...location, longitudeDelta, latitudeDelta }}
+                region={{
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    longitudeDelta,
+                    latitudeDelta,
+                }}
             >
                 <Marker
-                    coordinate={location}
+                    coordinate={{
+                        latitude: location.coords.latitude,
+                        longitude: location.coords.longitude,
+                    }}
                     draggable={true}
                     onDragEnd={(e) => {
                         setLocation(e.nativeEvent.coordinate);
@@ -33,8 +66,3 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-
-LocationStep.propTypes = {
-    setLocation: PropTypes.func.isRequired,
-    location: PropTypes.shape({}).isRequired,
-};
