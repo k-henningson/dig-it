@@ -21,7 +21,9 @@ export default function LocationStep() {
                 return;
             }
 
-            let location = await Location.getCurrentPositionAsync({});
+            let location = await Location.getCurrentPositionAsync({
+                accuracy: Location.Accuracy.Balanced,
+            });
             setLocation(location);
         })();
     }, []);
@@ -35,7 +37,7 @@ export default function LocationStep() {
 
     return (
         <VStack alignItems="center" space={20} marginTop="30px">
-            <StyledText>Location Step {text}</StyledText>
+            <StyledText>Location Step</StyledText>
             <MapView
                 style={styles.map}
                 region={{
