@@ -10,7 +10,7 @@ const longitudeDelta = 0.0421;
 import * as Location from 'expo-location';
 
 export default function LocationStep() {
-    const [location, setLocation] = useState({ coords: {} });
+    const [location, setLocation] = useState({ latitude: '', longitude: '' });
     const [errorMsg, setErrorMsg] = useState(null);
 
     useEffect(() => {
@@ -24,14 +24,18 @@ export default function LocationStep() {
             let location = await Location.getCurrentPositionAsync({
                 accuracy: Location.Accuracy.Balanced,
             });
-            setLocation(location);
+            console.log(location);
+            setLocation({
+                longitude: location.coords.longitude,
+                latitude: location.coords.latitude,
+            });
         })();
     }, []);
 
     let text = 'Finding location...';
     if (errorMsg) {
         text = errorMsg;
-    } else if (location.coords.longitude) {
+    } else if (location.longitude) {
         text = JSON.stringify(location);
     }
 
@@ -41,19 +45,20 @@ export default function LocationStep() {
             <MapView
                 style={styles.map}
                 region={{
-                    latitude: location.coords.latitude,
-                    longitude: location.coords.longitude,
+                    latitude: location.latitude,
+                    longitude: location.longitude,
                     longitudeDelta,
                     latitudeDelta,
                 }}
             >
                 <Marker
                     coordinate={{
-                        latitude: location.coords.latitude,
-                        longitude: location.coords.longitude,
+                        latitude: location.latitude,
+                        longitude: location.longitude,
                     }}
                     draggable={true}
                     onDragEnd={(e) => {
+                        console.log(e.nativeEvent.coordinate);
                         setLocation(e.nativeEvent.coordinate);
                     }}
                 ></Marker>
