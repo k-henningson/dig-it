@@ -1,6 +1,6 @@
 import StyledText from '../../../components/StyledText/StyledText';
 import { VStack } from 'native-base';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
 
@@ -37,6 +37,7 @@ export default function LocationStep() {
         text = errorMsg;
     } else if (location.longitude) {
         text = JSON.stringify(location);
+        console.log(text);
     }
 
     return (
@@ -58,10 +59,13 @@ export default function LocationStep() {
                     }}
                     draggable={true}
                     onDragEnd={(e) => {
-                        console.log(e.nativeEvent.coordinate);
                         setLocation(e.nativeEvent.coordinate);
                     }}
-                ></Marker>
+                >
+                    <Callout tooltip>
+                        <StyledText>Snow pit ❄️</StyledText>
+                    </Callout>
+                </Marker>
             </MapView>
         </VStack>
     );
