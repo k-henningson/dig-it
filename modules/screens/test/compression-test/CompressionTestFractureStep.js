@@ -1,6 +1,6 @@
 import { ScrollView, VStack } from 'native-base';
-import StyledText from '../../../components/StyledText/StyledText';
 import PropTypes from 'prop-types';
+import StyledText from '../../../components/StyledText/StyledText';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 
 const testFractureOptions = [

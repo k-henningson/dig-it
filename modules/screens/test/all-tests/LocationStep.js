@@ -1,75 +1,82 @@
-import StyledText from '../../../components/StyledText/StyledText';
 import { VStack } from 'native-base';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import * as Location from 'expo-location';
+import StyledText from '../../../components/StyledText/StyledText';
 
 const latitudeDelta = 0.0922;
 const longitudeDelta = 0.0421;
 
-import * as Location from 'expo-location';
-
-export default function LocationStep() {
-    const [location, setLocation] = useState({ latitude: '', longitude: '' });
+export default function LocationStep({ location, setLocation }) {
     const [errorMsg, setErrorMsg] = useState(null);
 
     useEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
+        if (!location) {
+            (async () => {
+                let { status } =
+                    await Location.requestForegroundPermissionsAsync();
+                if (status !== 'granted') {
+                    setErrorMsg('Permission to access location was denied');
+                    return;
+                }
 
-            let location = await Location.getCurrentPositionAsync({
-                accuracy: Location.Accuracy.Balanced,
-            });
-            console.log(location);
-            setLocation({
-                longitude: location.coords.longitude,
-                latitude: location.coords.latitude,
-            });
-        })();
+                let userLocation = await Location.getCurrentPositionAsync({
+                    accuracy: Location.Accuracy.Balanced,
+                });
+
+                setLocation({
+                    longitude: userLocation.coords.longitude,
+                    latitude: userLocation.coords.latitude,
+                });
+            })();
+        }
     }, []);
-
-    let text = 'Finding location...';
-    if (errorMsg) {
-        text = errorMsg;
-    } else if (location.longitude) {
-        text = JSON.stringify(location);
-        console.log(text);
-    }
 
     return (
         <VStack alignItems="center" space={20} marginTop="30px">
-            <StyledText>Location Step</StyledText>
-            <MapView
-                style={styles.map}
-                region={{
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                    longitudeDelta,
-                    latitudeDelta,
-                }}
-            >
-                <Marker
-                    coordinate={{
+            <StyledText>Add Location</StyledText>
+            {errorMsg ? <StyledText>{errorMsg}</StyledText> : null}
+            {location ? (
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
                         latitude: location.latitude,
                         longitude: location.longitude,
-                    }}
-                    draggable={true}
-                    onDragEnd={(e) => {
-                        setLocation(e.nativeEvent.coordinate);
+                        longitudeDelta,
+                        latitudeDelta,
                     }}
                 >
-                    <Callout tooltip>
-                        <StyledText>Snow pit ❄️</StyledText>
-                    </Callout>
-                </Marker>
-            </MapView>
+                    <Marker
+                        coordinate={{
+                            latitude: location.latitude,
+                            longitude: location.longitude,
+                        }}
+                        draggable
+                        onDragEnd={(e) => {
+                            setLocation(e.nativeEvent.coordinate);
+                        }}
+                    >
+                        <Callout tooltip>
+                            <StyledText>Snow pit ❄️</StyledText>
+                        </Callout>
+                    </Marker>
+                </MapView>
+            ) : (
+                <StyledText>Finding location</StyledText>
+            )}
         </VStack>
     );
 }
+
+LocationStep.propTypes = {
+    location: PropTypes.shape({
+        latitude: PropTypes.number.isRequired,
+        longitude: PropTypes.number.isRequired,
+    }),
+    setLocation: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
     map: {

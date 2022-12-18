@@ -16,6 +16,7 @@ export default function DeepTapTestWizard(props) {
         weather: '',
         snowCondition: '',
         title: '',
+        location: null,
     });
 
     const updateByKey = (key) => (value) => {
@@ -59,7 +60,10 @@ export default function DeepTapTestWizard(props) {
                 title={testData.title}
                 setTitle={updateByKey('title')}
             />
-            <LocationStep />
+            <LocationStep
+                location={testData.location}
+                setLocation={updateByKey('location')}
+            />
         </Wizard>
     );
 }

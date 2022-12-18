@@ -1,7 +1,7 @@
 import { VStack, ScrollView } from 'native-base';
+import PropTypes from 'prop-types';
 import StyledText from '../../../components/StyledText/StyledText';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
-import PropTypes from 'prop-types';
 
 const snowConditionTestOptions = [
     { name: 'Dumping', description: '💩' },
