@@ -20,6 +20,7 @@ export default function LocationStep({ location, setLocation }) {
                 if (status !== 'granted') {
                     setErrorMsg('Permission to access location was denied');
                     return;
+                    // TODO render a zoomed out map if user denies location so user can still select location instead of seeing "Finding location"
                 }
 
                 let userLocation = await Location.getCurrentPositionAsync({
