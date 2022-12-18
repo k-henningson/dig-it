@@ -15,7 +15,7 @@ export default function LocationStep({ location, setLocation }) {
     useEffect(() => {
         if (!location) {
             (async () => {
-                let { status } =
+                const { status } =
                     await Location.requestForegroundPermissionsAsync();
                 if (status !== 'granted') {
                     setErrorMsg('Permission to access location was denied');
@@ -23,7 +23,7 @@ export default function LocationStep({ location, setLocation }) {
                     // TODO render a zoomed out map if user denies location so user can still select location instead of seeing "Finding location"
                 }
 
-                let userLocation = await Location.getCurrentPositionAsync({
+                const userLocation = await Location.getCurrentPositionAsync({
                     accuracy: Location.Accuracy.Balanced,
                 });
 
