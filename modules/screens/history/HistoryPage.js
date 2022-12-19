@@ -1,17 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { View } from 'react-native';
 import { HStack, ScrollView, Divider } from 'native-base';
-import { db } from './firebaseConfig';
+import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
 import HistoryBox from './HistoryBox';
 
 export default function HistoryPage() {
+    const [testResults, setTestResults] = useState([]);
+
     useEffect(() => {
         getDocs(collection(db, 'testResults')).then((res) => {
-            res.forEach((doc) => {
-                console.log(doc.data());
+            const results = res.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id };
             });
+            setTestResults(results);
         });
     }, []);
 
@@ -24,25 +27,29 @@ export default function HistoryPage() {
                     justifyContent: 'center',
                 }}
             >
-                <HistoryBox>
-                    <HStack justifyContent="space-between" space={2}>
-                        <StyledText styles={{}}>Title/Location</StyledText>
-                        <Divider
-                            bg="emerald.500"
-                            thickness="2"
-                            mx="2"
-                            orientation="vertical"
-                        />
-                        <StyledText styles={{}}>Test Result</StyledText>
-                        <Divider
-                            bg="emerald.500"
-                            thickness="2"
-                            mx="2"
-                            orientation="vertical"
-                        />
-                        <StyledText styles={{}}>Weather Icon</StyledText>
-                    </HStack>
-                </HistoryBox>
+                {testResults.map((testResult) => (
+                    <HistoryBox key={testResult.id}>
+                        <HStack justifyContent="space-between" space={2}>
+                            <StyledText>{testResult.title}</StyledText>
+                            <Divider
+                                bg="emerald.500"
+                                thickness="2"
+                                mx="2"
+                                orientation="vertical"
+                            />
+                            <StyledText>
+                                {testResult.results.tapResult}
+                            </StyledText>
+                            <Divider
+                                bg="emerald.500"
+                                thickness="2"
+                                mx="2"
+                                orientation="vertical"
+                            />
+                            <StyledText>{testResult.weather}</StyledText>
+                        </HStack>
+                    </HistoryBox>
+                ))}
             </View>
         </ScrollView>
     );
