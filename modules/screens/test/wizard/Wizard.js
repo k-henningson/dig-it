@@ -1,15 +1,17 @@
 import { Modal, Button, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../../../firebaseConfig';
 import SuccessStep from '../all-tests/SuccessStep';
 import ProgressBar from './ProgressBar';
 
 export default function Wizard({
     isVisible,
     title,
-    handleSubmit,
     children,
     handleClose,
+    testData,
 }) {
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
@@ -28,6 +30,29 @@ export default function Wizard({
         currentStepIndex === 0
             ? handleClose()
             : setCurrentStepIndex((index) => (index -= 1));
+
+    const handleSubmit = () => {
+        addDoc(collection(db, 'testResults'), {
+            result: {
+                tapResult: testData.tapResult,
+                tapNumber: testData.tapNumber,
+                fractureType: testData.fractureType,
+            },
+            weather: testData.weather,
+            snowCondition: testData.snowCondition,
+            title: testData.title,
+            location: testData.location,
+        })
+            .then((data) => {
+                // TODO show success
+                console.log('data: ', data);
+            })
+            .catch((err) => {
+                // TODO add error handling
+                console.log('err: ', err);
+            });
+        handleClose();
+    };
 
     return (
         <Modal isOpen={isVisible} onClose={handleClose} size="full">
@@ -55,7 +80,7 @@ export default function Wizard({
                             Back
                         </Button>
                         {isLastStep ? (
-                            <Button onPress={handleSubmit}>Finish</Button>
+                            <Button onPress={handleSubmit}>Submit</Button>
                         ) : (
                             <Button
                                 isDisabled={currentStep.props.canNext === false}
@@ -77,4 +102,5 @@ Wizard.propTypes = {
     title: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleClose: PropTypes.func.isRequired,
+    testData: PropTypes.object.isRequired,
 };

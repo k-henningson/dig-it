@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { View } from 'react-native';
 import { HStack, ScrollView, Divider } from 'native-base';
+import { useFocusEffect } from '@react-navigation/native';
 import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
 import HistoryBox from './HistoryBox';
@@ -9,14 +10,14 @@ import HistoryBox from './HistoryBox';
 export default function HistoryPage() {
     const [testResults, setTestResults] = useState([]);
 
-    useEffect(() => {
+    useFocusEffect(() => {
         getDocs(collection(db, 'testResults')).then((res) => {
             const results = res.docs.map((doc) => {
                 return { ...doc.data(), id: doc.id };
             });
             setTestResults(results);
         });
-    }, []);
+    });
 
     return (
         <ScrollView>
