@@ -38,7 +38,7 @@ export default function HistoryPage() {
                                 orientation="vertical"
                             />
                             <StyledText>
-                                {testResult.results.tapResult}
+                                {testResult.result.tapResult}
                             </StyledText>
                             <Divider
                                 bg="emerald.500"
