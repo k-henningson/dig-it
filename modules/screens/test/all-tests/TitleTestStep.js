@@ -1,6 +1,6 @@
 import { Input, Box } from 'native-base';
-import StyledText from '../../../components/StyledText/StyledText';
 import PropTypes from 'prop-types';
+import StyledText from '../../../components/StyledText/StyledText';
 
 export default function TitleTestStep(props) {
     return (

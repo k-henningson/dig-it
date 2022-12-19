@@ -1,7 +1,7 @@
 import { VStack, ScrollView } from 'native-base';
+import PropTypes from 'prop-types';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
 import StyledText from '../../../components/StyledText/StyledText';
-import PropTypes from 'prop-types';
 
 const testTapOptions = [
     { name: 'CTV', description: '0 taps: Very Easy' },

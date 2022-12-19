@@ -1,5 +1,5 @@
-import StyledText from '../../../components/StyledText/StyledText';
 import { VStack } from 'native-base';
+import StyledText from '../../../components/StyledText/StyledText';
 
 const successStepMessageOptions = [
     "It's shreddin' time!",

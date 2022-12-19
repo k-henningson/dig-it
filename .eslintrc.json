@@ -15,7 +15,7 @@
         "sourceType": "module"
     },
     "plugins": ["react"],
-    "rules": {},
+    "rules": { "prefer-const": "error" },
     "settings": {
         "react": {
             "version": "detect"

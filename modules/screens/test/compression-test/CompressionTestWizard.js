@@ -6,6 +6,7 @@ import CompressionTestTapsStep from './CompressionTestTapsStep';
 import WeatherTestStep from '../all-tests/WeatherTestStep';
 import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 import TitleTestStep from '../all-tests/TitleTestStep';
+import LocationStep from '../all-tests/LocationStep';
 
 export default function CompressionTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -15,6 +16,7 @@ export default function CompressionTestWizard(props) {
         weather: '',
         snowCondition: '',
         title: '',
+        location: null,
     });
 
     const updateByKey = (key) => (value) => {
@@ -57,6 +59,10 @@ export default function CompressionTestWizard(props) {
             <TitleTestStep
                 title={testData.title}
                 setTitle={updateByKey('title')}
+            />
+            <LocationStep
+                location={testData.location}
+                setLocation={updateByKey('location')}
             />
         </Wizard>
     );
