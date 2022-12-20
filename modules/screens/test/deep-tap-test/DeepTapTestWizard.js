@@ -29,7 +29,7 @@ export default function DeepTapTestWizard(props) {
         testData.tapResult === 'DTN' || testData.tapResult === 'DTV';
 
     return (
-        <Wizard {...props}>
+        <Wizard {...props} testData={testData}>
             <DeepTapTestTapsStep
                 canNext={testData.tapResult !== ''}
                 tapResult={testData.tapResult}
