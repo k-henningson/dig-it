@@ -14,7 +14,6 @@ export default function HistoryPage() {
 
     useEffect(() => {
         if (isFocused) {
-            console.log('isFocused: ', isFocused);
             getDocs(collection(db, 'testResults')).then((res) => {
                 const results = res.docs.map((doc) => {
                     return { ...doc.data(), id: doc.id };
