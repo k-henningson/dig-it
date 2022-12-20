@@ -7,6 +7,7 @@ import WeatherTestStep from '../all-tests/WeatherTestStep';
 import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 import TitleTestStep from '../all-tests/TitleTestStep';
 import LocationStep from '../all-tests/LocationStep';
+import ImageStep from '../all-tests/ImageStep';
 
 export default function DeepTapTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -17,6 +18,7 @@ export default function DeepTapTestWizard(props) {
         snowCondition: '',
         title: '',
         location: null,
+        images: '',
     });
 
     const updateByKey = (key) => (value) => {
@@ -63,6 +65,10 @@ export default function DeepTapTestWizard(props) {
             <LocationStep
                 location={testData.location}
                 setLocation={updateByKey('location')}
+            />
+            <ImageStep
+                images={testData.images}
+                setImages={updateByKey('images')}
             />
         </Wizard>
     );

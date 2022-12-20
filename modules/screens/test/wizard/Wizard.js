@@ -42,6 +42,7 @@ export default function Wizard({
             snowCondition: testData.snowCondition,
             title: testData.title,
             location: testData.location,
+            images: testData.images,
         })
             .then((data) => {
                 // TODO show success
