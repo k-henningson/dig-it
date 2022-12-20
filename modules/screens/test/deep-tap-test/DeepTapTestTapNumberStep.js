@@ -1,5 +1,5 @@
-import { Select } from 'native-base';
 import PropTypes from 'prop-types';
+import { Picker } from '@react-native-picker/picker';
 import { generateNumberRange } from '../../../../commons/utils/numbers-utils';
 
 const TAP_RANGES = {
@@ -23,15 +23,11 @@ export default function DeepTapTestTapNumberStep({
     setTapNumber,
 }) {
     return (
-        <Select
-            selectedValue={tapNumber}
-            onValueChange={setTapNumber}
-            placeholder="Pick a number"
-        >
+        <Picker selectedValue={tapNumber} onValueChange={setTapNumber}>
             {generateNumberRange(TAP_RANGES[tapResult]).map((num) => (
-                <Select.Item key={num} label={num.toString()} value={num} />
+                <Picker.Item key={num} label={num.toString()} value={num} />
             ))}
-        </Select>
+        </Picker>
     );
 }
 
