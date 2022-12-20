@@ -1,4 +1,4 @@
-# Dig It ❄️ - expected completion date January 31st 2023
+# Dig It ❄️ - In progress (MVP estimated completion date: February 2023)
 
 Dig It is a mobile app that assists backcountry skiers in assessing avalanche conditions by evaluating the snowpack. The goal of this project is to provide the backcountry community with a solution for recording snow pit data.
 <br></br>
@@ -20,13 +20,23 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 ### Tech Stack
 
--   Front End:
--   Back End:
--   DB:
+-   React Native
+-   Firebase (Authentication & Firestore)
+-   Expo
+-   Expo Location
+-   Native Base
+-   React Native Maps
+-   React Navigation
+-   React Native Reanimated
+-   Moti
+    <br></br>
+
+### Dev Dependencies
+
+-   Eslint
+-   Prettier with pre-commit Git hook
     <br></br>
 
 ### Setup
 
-1.
-2.
-3.
+TBD
