@@ -34,7 +34,11 @@ export default function HistoryPage() {
             >
                 {testResults.map((testResult) => (
                     <HistoryBox key={testResult.id}>
-                        <VStack justifyContent="space-between" space={2}>
+                        <VStack
+                            justifyContent="space-between"
+                            space={2}
+                            alignItems="center"
+                        >
                             <StyledText>{testResult.title}</StyledText>
                             <StyledText>
                                 {testResult.result.tapResult}
