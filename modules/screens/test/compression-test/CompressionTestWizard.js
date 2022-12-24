@@ -27,7 +27,7 @@ export default function CompressionTestWizard(props) {
         testData.tapResult === 'CTN' || testData.tapResult === 'CTV';
 
     return (
-        <Wizard {...props}>
+        <Wizard {...props} testData={testData}>
             <CompressionTestTapsStep
                 canNext={testData.tapResult !== ''}
                 tapResult={testData.tapResult}
