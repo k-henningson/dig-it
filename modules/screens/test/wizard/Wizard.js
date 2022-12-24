@@ -103,5 +103,16 @@ Wizard.propTypes = {
     title: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleClose: PropTypes.func.isRequired,
-    testData: PropTypes.object.isRequired,
+    testData: PropTypes.shape({
+        tapResult: PropTypes.string.isRequired,
+        tapNumber: PropTypes.number,
+        fractureType: PropTypes.string.isRequired,
+        weather: PropTypes.string.isRequired,
+        snowCondition: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        location: PropTypes.shape({
+            latitude: PropTypes.number,
+            longitude: PropTypes.number,
+        }),
+    }),
 };

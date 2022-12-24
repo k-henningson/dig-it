@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { View } from 'react-native';
-import { HStack, ScrollView, Divider } from 'native-base';
+import { VStack, ScrollView } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
@@ -34,25 +34,17 @@ export default function HistoryPage() {
             >
                 {testResults.map((testResult) => (
                     <HistoryBox key={testResult.id}>
-                        <HStack justifyContent="space-between" space={2}>
+                        <VStack
+                            justifyContent="space-between"
+                            space={2}
+                            alignItems="center"
+                        >
                             <StyledText>{testResult.title}</StyledText>
-                            <Divider
-                                bg="emerald.500"
-                                thickness="2"
-                                mx="2"
-                                orientation="vertical"
-                            />
                             <StyledText>
                                 {testResult.result.tapResult}
                             </StyledText>
-                            <Divider
-                                bg="emerald.500"
-                                thickness="2"
-                                mx="2"
-                                orientation="vertical"
-                            />
                             <StyledText>{testResult.weather}</StyledText>
-                        </HStack>
+                        </VStack>
                     </HistoryBox>
                 ))}
             </View>
