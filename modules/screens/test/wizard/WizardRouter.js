@@ -2,6 +2,7 @@ import { TEST_NAMES } from '../../../../commons/constants/test-constants';
 import CompressionTestWizard from '../compression-test/CompressionTestWizard';
 import DeepTapTestWizard from '../deep-tap-test/DeepTapTestWizard';
 import ExtendedColumnTestWizard from '../extended-column-test/ExtendedColumnTestWizard';
+import HandShearTestWizard from '../hand-shear-test/HandShearTestWizard';
 import ShovelShearTestWizard from '../shovel-shear-test/ShovelShearTestWizard';
 
 export default function WizardRouter({ testId, ...props }) {
@@ -15,6 +16,8 @@ export default function WizardRouter({ testId, ...props }) {
                 return <ExtendedColumnTestWizard {...props} />;
             case TEST_NAMES.SHOVEL_SHEAR:
                 return <ShovelShearTestWizard {...props} />;
+            case TEST_NAMES.HAND_SHEAR:
+                return <HandShearTestWizard {...props} />;
             default:
                 break;
         }
