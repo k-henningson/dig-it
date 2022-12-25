@@ -38,6 +38,7 @@ export default function Wizard({
                 tapNumber: testData.tapNumber,
                 fractureType: testData.fractureType,
             },
+            type: testData.type,
             weather: testData.weather,
             snowCondition: testData.snowCondition,
             title: testData.title,
@@ -110,6 +111,8 @@ Wizard.propTypes = {
         weather: PropTypes.string.isRequired,
         snowCondition: PropTypes.string.isRequired,
         title: PropTypes.string,
+        images: PropTypes.string,
+        type: PropTypes.string,
         location: PropTypes.shape({
             latitude: PropTypes.number,
             longitude: PropTypes.number,

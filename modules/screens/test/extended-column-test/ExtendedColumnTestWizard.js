@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import Wizard from '../wizard/Wizard';
-import DeepTapTestTapsStep from './DeepTapTestTapsStep';
-import DeepTapTestTapNumberStep from './DeepTapTestTapNumberStep';
-import DeepTapTestFractureStep from './DeepTapTestFractureStep';
+import ExtendedColumnTestFractureStep from './ExtendedColumnTestFractureStep';
 import WeatherTestStep from '../all-tests/WeatherTestStep';
 import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 import TitleTestStep from '../all-tests/TitleTestStep';
 import LocationStep from '../all-tests/LocationStep';
 import ImageStep from '../all-tests/ImageStep';
 
-export default function DeepTapTestWizard(props) {
+export default function ExtendedColumnTestWizard(props) {
     const [testData, setTestData] = useState({
         type: '',
         tapResult: '',
@@ -26,25 +24,9 @@ export default function DeepTapTestWizard(props) {
         setTestData((prev) => ({ ...prev, [key]: value }));
     };
 
-    const shouldSkipTapNumberStep =
-        testData.tapResult === 'DTN' || testData.tapResult === 'DTV';
-
     return (
         <Wizard {...props} testData={testData}>
-            <DeepTapTestTapsStep
-                canNext={testData.tapResult !== ''}
-                tapResult={testData.tapResult}
-                setTapResult={updateByKey('tapResult')}
-            />
-            {shouldSkipTapNumberStep ? null : (
-                <DeepTapTestTapNumberStep
-                    tapResult={testData.tapResult}
-                    canNext={testData.tapNumber !== null}
-                    tapNumber={testData.tapNumber}
-                    setTapNumber={updateByKey('tapNumber')}
-                />
-            )}
-            <DeepTapTestFractureStep
+            <ExtendedColumnTestFractureStep
                 canNext={testData.fractureType !== ''}
                 fracture={testData.fractureType}
                 setFracture={updateByKey('fractureType')}

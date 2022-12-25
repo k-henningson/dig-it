@@ -22,7 +22,7 @@ export default function HistoryPage() {
             });
         }
     }, [isFocused]);
-
+    console.log('testResults: ', testResults);
     return (
         <ScrollView>
             <View
@@ -37,13 +37,13 @@ export default function HistoryPage() {
                         <VStack
                             justifyContent="space-between"
                             space={2}
-                            alignItems="center"
+                            alignItems="left"
                         >
                             <StyledText>{testResult.title}</StyledText>
                             <StyledText>
-                                {testResult.result.tapResult}
+                                {testResult.result.tapNumber}
                             </StyledText>
-                            <StyledText>{testResult.weather}</StyledText>
+                            <StyledText>{testResult.type}</StyledText>
                         </VStack>
                     </HistoryBox>
                 ))}

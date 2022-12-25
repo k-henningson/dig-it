@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function ProfileBox(props) {
     return (
         <Box
-            width="80%"
+            width="90%"
             rounded="lg"
             overflow="hidden"
             p="10"

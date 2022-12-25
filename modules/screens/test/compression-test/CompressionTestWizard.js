@@ -11,6 +11,7 @@ import ImageStep from '../all-tests/ImageStep';
 
 export default function CompressionTestWizard(props) {
     const [testData, setTestData] = useState({
+        type: '',
         tapResult: '',
         tapNumber: null,
         fractureType: '',

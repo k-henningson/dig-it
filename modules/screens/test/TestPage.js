@@ -18,8 +18,14 @@ const tests = [
             'The deep tap test is used to determine the fracture character of a weak layer that is too deep to fracture consistently in the compression test. In addition, it is possible to observe the tapping force required for fracture to occur.',
     },
     {
+        id: TEST_NAMES.PROPAGATION_SAW,
+        label: 'Coming soon: Propagation Saw Test (PST)',
+        objective:
+            'The propagation saw test is a snowpack test that aims to indicate the propensity of a pre-identified slab and weak layer combination to propagate a fracture.',
+    },
+    {
         id: TEST_NAMES.EXTENDED_COLUMN,
-        label: 'Coming soon: Extended Column Test (ECT)',
+        label: 'Extended Column Test (ECT)',
         objective:
             'The extended column test is a snowpack test that aims to indicate the propensity (tendency) of slab and weak layer combinations in the upper portion of the snowpack (< 1m deep) to propagate a fracture.',
     },
@@ -30,14 +36,8 @@ const tests = [
             'The rutschblock (or glide-block) test is a slope test that was developed in Switzerland in the 1960s. These guidelines are based on a recent Swiss analysis of rutschblock tests (Fohn, 1987) and on Canadian research (Jamieson and Johnston, 1993).',
     },
     {
-        id: TEST_NAMES.PROPAGATION_SAW,
-        label: 'Coming soon: Propagation Saw Test (PST)',
-        objective:
-            'The propagation saw test is a snowpack test that aims to indicate the propensity of a pre-identified slab and weak layer combination to propagate a fracture.',
-    },
-    {
         id: TEST_NAMES.SHOVEL_SHEAR,
-        label: 'Coming soon: Shovel Shear Test (ST)',
+        label: 'Shovel Shear Test (ST)',
         objective:
             'The shovel shear test provides information about the location where snow could fracture in a shear and a qualitative assessment of weak layer strength.',
     },
