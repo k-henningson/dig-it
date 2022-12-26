@@ -5,9 +5,9 @@ import ExtendedColumnTestWizard from '../extended-column-test/ExtendedColumnTest
 import HandShearTestWizard from '../hand-shear-test/HandShearTestWizard';
 import ShovelShearTestWizard from '../shovel-shear-test/ShovelShearTestWizard';
 
-export default function WizardRouter({ testId, ...props }) {
+export default function WizardRouter(props) {
     const testToRender = () => {
-        switch (testId) {
+        switch (props.test.id) {
             case TEST_NAMES.COMPRESSION:
                 return <CompressionTestWizard {...props} />;
             case TEST_NAMES.DEEP_TAP:

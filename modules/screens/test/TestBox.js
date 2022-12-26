@@ -4,7 +4,7 @@ import { useState } from 'react';
 import WizardRouter from './wizard/WizardRouter';
 import * as Haptics from 'expo-haptics';
 
-export default function TestBox({ children, test: { label, id } }) {
+export default function TestBox({ children, test }) {
     const [showModal, setShowModal] = useState(false);
 
     const handleSubmit = () => {
@@ -38,9 +38,8 @@ export default function TestBox({ children, test: { label, id } }) {
             </Pressable>
             {showModal && (
                 <WizardRouter
-                    testId={id}
+                    test={test}
                     isVisible={showModal}
-                    title={label}
                     handleClose={() => setShowModal(false)} // todo add confirmation before closing
                     handleSubmit={handleSubmit}
                 />

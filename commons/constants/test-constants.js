@@ -1,9 +1,9 @@
 export const TEST_NAMES = {
-    COMPRESSION: 'COMPRESSION',
-    DEEP_TAP: 'DEEP_TAP',
-    EXTENDED_COLUMN: 'EXTENDED_COLUMN',
-    RUTSCHBLOCK: 'RUTSCHBLOCK',
-    PROPAGATION_SAW: 'PROPAGATION_SAW',
-    SHOVEL_SHEAR: 'SHOVEL_SHEAR',
-    HAND_SHEAR: 'HAND_SHEAR',
+    COMPRESSION: 'Compression',
+    DEEP_TAP: 'Deep Tap',
+    EXTENDED_COLUMN: 'Extended Column',
+    RUTSCHBLOCK: 'Rutschblock',
+    PROPAGATION_SAW: 'Propagation Saw',
+    SHOVEL_SHEAR: 'Shovel Shear',
+    HAND_SHEAR: 'Hand Shear',
 };
