@@ -1,19 +1,12 @@
 import { Button, Box, Image } from 'native-base';
 import * as ImagePicker from 'expo-image-picker';
 import PropTypes from 'prop-types';
-import StyledText from '../../../components/StyledText/StyledText';
 
 export default function ImageStep({ images, setImages }) {
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
         });
-
-        console.log(result);
-
         if (!result.canceled) {
             setImages(result.assets[0].uri);
         }
@@ -21,9 +14,8 @@ export default function ImageStep({ images, setImages }) {
 
     return (
         <Box alignItems="center" marginTop="30px">
-            <Button onPress={pickImage}>
-                {' '}
-                <StyledText>Select Images ❄️</StyledText>
+            <Button onPress={pickImage} marginBottom="20px" size="lg">
+                Select Image ❄️
             </Button>
             {images && (
                 <Image
