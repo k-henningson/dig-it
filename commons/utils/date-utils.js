@@ -6,7 +6,7 @@ export default function formatDate(testResult) {
     const day = dateObj.getDay();
     const date = dateObj.getDate();
     const month = dateObj.getMonth();
-    const year = dateObj.getFullYear();
+    // const year = dateObj.getFullYear();
     const DAYS = [
         'Sunday',
         'Monday',
@@ -30,5 +30,5 @@ export default function formatDate(testResult) {
         'November',
         'December',
     ];
-    return `${DAYS[day]}, ${date} ${MONTHS[month].slice(0, 3)} ${year}`;
+    return `${DAYS[day]}, ${date} ${MONTHS[month].slice(0, 3)}`;
 }

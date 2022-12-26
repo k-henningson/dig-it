@@ -1,4 +1,4 @@
-import { TEST_NAMES } from '../../../../commons/constants/test-constants';
+import { TEST_NAMES } from '../../../../commons/constants/tests';
 import CompressionTestWizard from '../compression-test/CompressionTestWizard';
 import DeepTapTestWizard from '../deep-tap-test/DeepTapTestWizard';
 import ExtendedColumnTestWizard from '../extended-column-test/ExtendedColumnTestWizard';
