@@ -11,7 +11,7 @@ export default function HistoryBox(props) {
             p="8"
             my="2"
             borderColor="coolGray.300"
-            borderWidth="2"
+            borderWidth="0.9"
             _web={{
                 shadow: 2,
                 borderWidth: 0,

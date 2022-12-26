@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { View } from 'react-native';
-import { VStack, ScrollView } from 'native-base';
+import { VStack, ScrollView, HStack, Text } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
@@ -24,6 +24,15 @@ export default function HistoryPage() {
         }
     }, [isFocused]);
 
+    // const weatherEmojiOptions = {
+    //     Sun: '☀️',
+    //     Light clouds: '🌤',
+    //     Cloudy: '☁️',
+    //     Rain: '🌧',
+    //     Fog: '🌫',
+    //     Snow: '❄️',
+    // };
+
     return (
         <ScrollView>
             <View
@@ -41,7 +50,12 @@ export default function HistoryPage() {
                             alignItems="left"
                         >
                             <StyledText>{testResult.title}</StyledText>
-                            <StyledText>{formatDate(testResult)}</StyledText>
+                            <HStack justifyContent="space-between" space={20}>
+                                <StyledText>
+                                    {formatDate(testResult)}
+                                </StyledText>
+                                <Text fontSize={40}>❄️</Text>
+                            </HStack>
                             <StyledText>{testResult.type}</StyledText>
                         </VStack>
                     </HistoryBox>
