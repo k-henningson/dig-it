@@ -7,10 +7,11 @@ export default function HistoryBox(props) {
             width="90%"
             rounded="lg"
             overflow="hidden"
+            display="flex"
             p="8"
-            m="3"
+            my="2"
             borderColor="coolGray.300"
-            borderWidth="2"
+            borderWidth="0.9"
             _web={{
                 shadow: 2,
                 borderWidth: 0,

@@ -1,14 +1,14 @@
 import { Modal, Button, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../../../firebaseConfig';
 import SuccessStep from '../all-tests/SuccessStep';
 import ProgressBar from './ProgressBar';
 
 export default function Wizard({
     isVisible,
-    title,
+    test,
     children,
     handleClose,
     testData,
@@ -38,10 +38,13 @@ export default function Wizard({
                 tapNumber: testData.tapNumber,
                 fractureType: testData.fractureType,
             },
+            type: test.id,
             weather: testData.weather,
             snowCondition: testData.snowCondition,
             title: testData.title,
             location: testData.location,
+            images: testData.images,
+            timestamp: serverTimestamp(),
         })
             .then((data) => {
                 // TODO show success
@@ -58,7 +61,7 @@ export default function Wizard({
         <Modal isOpen={isVisible} onClose={handleClose} size="full">
             <Modal.Content maxWidth="90%" height="90%">
                 <Modal.CloseButton />
-                <Modal.Header>{title}</Modal.Header>
+                <Modal.Header>{test.label}</Modal.Header>
                 <Modal.Body>
                     <Center w="100%">
                         <Box w="100%">
@@ -99,16 +102,23 @@ export default function Wizard({
 Wizard.propTypes = {
     isVisible: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
-    title: PropTypes.string.isRequired,
+    test: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        objective: PropTypes.string.isRequired,
+        steps: PropTypes.arrayOf(PropTypes.shape({})), // todo make step prop
+    }),
     handleSubmit: PropTypes.func.isRequired,
     handleClose: PropTypes.func.isRequired,
     testData: PropTypes.shape({
-        tapResult: PropTypes.string.isRequired,
+        tapResult: PropTypes.string,
         tapNumber: PropTypes.number,
         fractureType: PropTypes.string.isRequired,
         weather: PropTypes.string.isRequired,
         snowCondition: PropTypes.string.isRequired,
         title: PropTypes.string,
+        images: PropTypes.string,
+        type: PropTypes.string,
         location: PropTypes.shape({
             latitude: PropTypes.number,
             longitude: PropTypes.number,
