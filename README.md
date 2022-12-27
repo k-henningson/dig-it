@@ -7,15 +7,21 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 <br></br>
 
-## Final Product
+## Product - as of December 2022
 
-!["Insert screenshot or gif"]()
-<br></br>
-!["Location"](https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8131.PNG?raw=true)
-<br></br>
-!["Fracture Taps"](https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8130.PNG?raw=true)
-<br></br>
-!["Insert screenshot or gif"]()
+<table>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8128.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8131.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8132.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8129.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8130.PNG?raw=true"></td>
+  </tr>
+</table>
 <br></br>
 
 ### Tech Stack
