@@ -20,6 +20,7 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
   </tr>
   <tr>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8130.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-43-implement-remaining-snowpack-test-options/docs/IMG_8154.PNG?raw=true"></td>
   </tr>
 </table>
 <br></br>
