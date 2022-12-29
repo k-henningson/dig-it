@@ -6,6 +6,7 @@ import SnowConditionTestStep from '../all-tests/SnowConditionTestStep';
 import TitleTestStep from '../all-tests/TitleTestStep';
 import LocationStep from '../all-tests/LocationStep';
 import ImageStep from '../all-tests/ImageStep';
+import NotesStep from '../all-tests/NotesStep';
 
 export default function ExtendedColumnTestWizard(props) {
     const [testData, setTestData] = useState({
@@ -18,6 +19,7 @@ export default function ExtendedColumnTestWizard(props) {
         title: '',
         location: null,
         images: '',
+        notes: '',
     });
 
     const updateByKey = (key) => (value) => {
@@ -53,6 +55,7 @@ export default function ExtendedColumnTestWizard(props) {
                 images={testData.images}
                 setImages={updateByKey('images')}
             />
+            <NotesStep notes={testData.notes} setNotes={updateByKey('notes')} />
         </Wizard>
     );
 }

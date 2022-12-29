@@ -45,6 +45,7 @@ export default function Wizard({
             location: testData.location,
             images: testData.images,
             timestamp: serverTimestamp(),
+            notes: testData.notes,
         })
             .then((data) => {
                 // TODO show success
@@ -123,5 +124,6 @@ Wizard.propTypes = {
             latitude: PropTypes.number,
             longitude: PropTypes.number,
         }),
+        notes: PropTypes.string,
     }),
 };
