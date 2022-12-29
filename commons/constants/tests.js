@@ -47,7 +47,7 @@ export const tests = [
     },
     {
         id: TEST_NAMES.RUTSCHBLOCK,
-        label: 'Coming soon: Rutschblock Test (RB)',
+        label: 'Rutschblock Test (RB)',
         objective:
             'The rutschblock (or glide-block) test is a slope test that was developed in Switzerland in the 1960s. These guidelines are based on a recent Swiss analysis of rutschblock tests (Fohn, 1987) and on Canadian research (Jamieson and Johnston, 1993).',
     },
