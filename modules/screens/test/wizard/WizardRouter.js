@@ -4,6 +4,7 @@ import DeepTapTestWizard from '../deep-tap-test/DeepTapTestWizard';
 import ExtendedColumnTestWizard from '../extended-column-test/ExtendedColumnTestWizard';
 import HandShearTestWizard from '../hand-shear-test/HandShearTestWizard';
 import ShovelShearTestWizard from '../shovel-shear-test/ShovelShearTestWizard';
+import RutschblockTestWizard from '../rutschblock-test/RutschblockTestWizard';
 
 export default function WizardRouter(props) {
     const testToRender = () => {
@@ -18,6 +19,8 @@ export default function WizardRouter(props) {
                 return <ShovelShearTestWizard {...props} />;
             case TEST_NAMES.HAND_SHEAR:
                 return <HandShearTestWizard {...props} />;
+            case TEST_NAMES.RUTSCHBLOCK:
+                return <RutschblockTestWizard {...props} />;
             default:
                 break;
         }

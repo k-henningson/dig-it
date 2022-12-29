@@ -12,7 +12,7 @@ export default function NotesStep(props) {
                 marginTop="10px"
                 size="2xl"
                 mx="3px"
-                placeholder="Example: Old chains wetted and rounding, still some crisp angles, friable."
+                placeholder="Example: 10am, NW aspect, 1733 meters elevation."
                 w="90%"
                 h="100%"
             />

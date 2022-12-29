@@ -21,14 +21,14 @@ export default function TestBox({ children, test }) {
         <>
             <Pressable
                 onPress={handlePress}
-                width="45%"
-                height="25%"
+                width="90%"
                 rounded="lg"
                 overflow="hidden"
+                display="flex"
                 p="4"
                 m="2"
-                borderColor="coolGray.200"
-                borderWidth="1"
+                borderColor="coolGray.300"
+                borderWidth="0.9"
                 _web={{
                     shadow: 2,
                     borderWidth: 0,
