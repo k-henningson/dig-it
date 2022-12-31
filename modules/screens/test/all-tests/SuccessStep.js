@@ -1,14 +1,14 @@
-import { VStack } from 'native-base';
+import { VStack, Text } from 'native-base';
 import StyledText from '../../../components/StyledText/StyledText';
 
 const successStepMessageOptions = [
-    "It's shreddin' time!",
-    'Time to shred the gnar!',
-    'Now get out and slay that pow!',
+    "It's shreddin' time ☃️",
+    'Time to shred the gnar ❄️',
+    'Now get out and slay that pow ⛷',
     "Let's go ski 🎶",
-    'Smash those pillows!',
+    'Smash those pillows ⛷',
     'Shred that pow 💥',
-    'Time to spread that gnar butter on the shred bread!',
+    'Time to spread that gnar butter 🧈 on the shred bread 🍞',
 ];
 
 const getSuccessMessage = () => {
@@ -19,8 +19,12 @@ const getSuccessMessage = () => {
 export default function SuccessStep() {
     return (
         <VStack alignItems="center" space={10} marginTop="30px">
-            <StyledText>🎉</StyledText>
-            <StyledText>{getSuccessMessage()}</StyledText>
+            <Text marginTop="80px" fontSize="125px">
+                🎉
+            </Text>
+            <StyledText margin="30px 5px 0px 5px" fontSize="25px">
+                {getSuccessMessage()}
+            </StyledText>
         </VStack>
     );
 }

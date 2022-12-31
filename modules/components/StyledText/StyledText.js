@@ -7,8 +7,8 @@ export default function StyledText(props) {
     return (
         <Text
             color={theme.foreground}
+            fontSize={20}
             style={{
-                fontSize: 20,
                 ...props.styles,
             }}
             {...props}
