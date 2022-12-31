@@ -1,4 +1,5 @@
 import { VStack, Text } from 'native-base';
+import Animated, { BounceIn } from 'react-native-reanimated';
 import StyledText from '../../../components/StyledText/StyledText';
 
 const successStepMessageOptions = [
@@ -19,9 +20,11 @@ const getSuccessMessage = () => {
 export default function SuccessStep() {
     return (
         <VStack alignItems="center" space={10} marginTop="30px">
-            <Text marginTop="80px" fontSize="125px">
-                🎉
-            </Text>
+            <Animated.View entering={BounceIn.duration(500).delay(200)}>
+                <Text marginTop="80px" fontSize="125px">
+                    🎉
+                </Text>
+            </Animated.View>
             <StyledText margin="30px 5px 0px 5px" fontSize="25px">
                 {getSuccessMessage()}
             </StyledText>
