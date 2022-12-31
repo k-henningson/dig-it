@@ -7,7 +7,6 @@ const snowConditionTestOptions = [
     { name: 'Dumping', description: '💩' },
     { name: 'Fresh Powder', description: '💥' },
     { name: 'Packed', description: '📦' },
-    { name: 'Groomed', description: '🪒' },
     { name: 'Granular', description: '🍚' },
     { name: 'Wet/Heavy', description: '💧' },
     { name: 'Icy', description: '🧊' },
