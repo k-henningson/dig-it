@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { View } from 'react-native';
 import { VStack, ScrollView, HStack, Text } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
@@ -8,22 +8,35 @@ import StyledText from '../../components/StyledText/StyledText';
 import HistoryBox from './HistoryBox';
 import formatDate from '../../../commons/utils/date-utils';
 import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
+import { useAuth } from '../../../commons/hooks/useAuth';
+import { UserContext } from '../../../commons/initializers';
 
 export default function HistoryPage() {
     const [testResults, setTestResults] = useState([]);
 
+    const { user } = useAuth();
+
+    const { guestUser } = useContext(UserContext);
+
     const isFocused = useIsFocused();
 
     useEffect(() => {
-        if (isFocused) {
-            getDocs(collection(db, 'testResults')).then((res) => {
+        if (isFocused && user) {
+            getDocs(
+                query(
+                    collection(db, 'testResults'),
+                    where('userId', '==', user.uid)
+                )
+            ).then((res) => {
                 const results = res.docs.map((doc) => {
                     return { ...doc.data(), id: doc.id };
                 });
                 setTestResults(results);
             });
+        } else if (guestUser) {
+            setTestResults(guestUser.testResults);
         }
-    }, [isFocused]);
+    }, [isFocused, user]);
 
     return (
         <ScrollView>
@@ -34,8 +47,8 @@ export default function HistoryPage() {
                     justifyContent: 'center',
                 }}
             >
-                {testResults.map((testResult) => (
-                    <HistoryBox key={testResult.id}>
+                {testResults.map((testResult, index) => (
+                    <HistoryBox key={testResult.id || index}>
                         <HStack justifyContent="space-around" space={20}>
                             <VStack
                                 justifyContent="space-between"
