@@ -2,16 +2,7 @@ import { VStack, ScrollView } from 'native-base';
 import PropTypes from 'prop-types';
 import StyledText from '../../../components/StyledText/StyledText';
 import CustomPressable from '../../../components/CustomPressable/CustomPressable';
-
-const snowConditionTestOptions = [
-    { name: 'Dumping', description: '💩' },
-    { name: 'Fresh Powder', description: '💥' },
-    { name: 'Packed', description: '📦' },
-    { name: 'Granular', description: '🍚' },
-    { name: 'Wet/Heavy', description: '💧' },
-    { name: 'Icy', description: '🧊' },
-    { name: 'Thin Cover', description: '🧹' },
-];
+import { snowConditionTestOptions } from '../../../../commons/constants/conditions';
 
 export default function SnowConditionTestStep({
     snowCondition,
