@@ -35,7 +35,7 @@ export default function HistoryPage() {
                 }}
             >
                 {testResults.map((testResult) => (
-                    <HistoryBox key={testResult.id}>
+                    <HistoryBox key={testResult.id} testResult={testResult}>
                         <HStack justifyContent="space-around" space={20}>
                             <VStack
                                 justifyContent="space-between"
