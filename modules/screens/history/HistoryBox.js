@@ -7,7 +7,7 @@ import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
 
 export default function HistoryBox({ children, testResult }) {
     const [showModal, setShowModal] = useState(false);
-
+    console.log('testResult', testResult);
     return (
         <>
             <Pressable
@@ -50,14 +50,23 @@ export default function HistoryBox({ children, testResult }) {
                                 space={2}
                                 alignItems="left"
                             >
-                                <StyledText fontWeight="medium">
-                                    {testResult.title}
-                                </StyledText>
                                 <StyledText color="blueGray.600">
                                     {formatDate(testResult)}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
                                     {testResult.type}
+                                </StyledText>
+                                <StyledText color="blueGray.600">
+                                    {testResult.result.fractureType}
+                                </StyledText>
+                                <StyledText color="blueGray.600">
+                                    {testResult.result.tapNumber}
+                                </StyledText>
+                                <StyledText color="blueGray.600">
+                                    {testResult.result.tapResult}
+                                </StyledText>
+                                <StyledText color="blueGray.600">
+                                    {testResult.notes}
                                 </StyledText>
                             </VStack>
                             <Text fontSize={40}>
