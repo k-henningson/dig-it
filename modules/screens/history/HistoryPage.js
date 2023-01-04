@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { View } from 'react-native';
 import { VStack, ScrollView, HStack, Text } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
@@ -25,6 +25,19 @@ export default function HistoryPage() {
         }
     }, [isFocused]);
 
+    const deleteTestResult = function (id) {
+        deleteDoc(doc(db, 'testResults', id))
+            .then(() => {
+                const results = testResults.filter((test) => {
+                    return test.id !== id;
+                });
+                setTestResults(results);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return (
         <ScrollView>
             <View
@@ -35,7 +48,11 @@ export default function HistoryPage() {
                 }}
             >
                 {testResults.map((testResult) => (
-                    <HistoryBox key={testResult.id} testResult={testResult}>
+                    <HistoryBox
+                        key={testResult.id}
+                        testResult={testResult}
+                        deleteTestResult={deleteTestResult}
+                    >
                         <HStack justifyContent="space-around" space={20}>
                             <VStack
                                 justifyContent="space-between"

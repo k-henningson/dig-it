@@ -6,9 +6,9 @@ import formatDate from '../../../commons/utils/date-utils';
 import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
 import { SNOW_CONDITION_EMOJIS } from '../../../commons/constants/conditions';
 
-export default function HistoryBox({ children, testResult }) {
+export default function HistoryBox({ children, testResult, deleteTestResult }) {
     const [showModal, setShowModal] = useState(false);
-    console.log('testResult', testResult);
+    console.log(testResult);
     return (
         <>
             <Pressable
@@ -87,6 +87,7 @@ export default function HistoryBox({ children, testResult }) {
                     <Modal.Footer>
                         <Button
                             onPress={() => {
+                                deleteTestResult(testResult.id);
                                 setShowModal(false);
                             }}
                         >
@@ -102,4 +103,5 @@ export default function HistoryBox({ children, testResult }) {
 HistoryBox.propTypes = {
     children: PropTypes.node.isRequired,
     testResult: PropTypes.object,
+    deleteTestResult: PropTypes.func,
 };
