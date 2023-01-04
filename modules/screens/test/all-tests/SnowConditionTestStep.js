@@ -11,20 +11,18 @@ export default function SnowConditionTestStep({
     return (
         <ScrollView>
             <VStack alignItems="center" space={3}>
-                {snowConditionTestOptions.map(
-                    ({ name, description }, index) => (
-                        <CustomPressable
-                            key={index}
-                            onPress={() => setSnowCondition(name)}
-                            isSelected={snowCondition === name}
-                        >
-                            <StyledText fontWeight="medium">{name}</StyledText>
-                            <StyledText color="blueGray.600">
-                                {description}
-                            </StyledText>
-                        </CustomPressable>
-                    )
-                )}
+                {snowConditionTestOptions.map(({ name, description, id }) => (
+                    <CustomPressable
+                        key={id}
+                        onPress={() => setSnowCondition(id)}
+                        isSelected={snowCondition === id}
+                    >
+                        <StyledText fontWeight="medium">{name}</StyledText>
+                        <StyledText color="blueGray.600">
+                            {description}
+                        </StyledText>
+                    </CustomPressable>
+                ))}
             </VStack>
         </ScrollView>
     );

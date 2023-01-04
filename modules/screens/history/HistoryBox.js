@@ -1,9 +1,10 @@
-import { Pressable, Modal, HStack, VStack, Text } from 'native-base';
+import { Pressable, Modal, HStack, VStack, Text, Button } from 'native-base';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import StyledText from '../../components/StyledText/StyledText';
 import formatDate from '../../../commons/utils/date-utils';
 import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
+import { SNOW_CONDITION_EMOJIS } from '../../../commons/constants/conditions';
 
 export default function HistoryBox({ children, testResult }) {
     const [showModal, setShowModal] = useState(false);
@@ -69,12 +70,29 @@ export default function HistoryBox({ children, testResult }) {
                                     {testResult.notes}
                                 </StyledText>
                             </VStack>
-                            <Text fontSize={40}>
-                                {WEATHER_EMOJIS[testResult.weather]}
-                            </Text>
+                            <VStack>
+                                <Text fontSize={40}>
+                                    {WEATHER_EMOJIS[testResult.weather]}
+                                </Text>
+                                <Text fontSize={40}>
+                                    {
+                                        SNOW_CONDITION_EMOJIS[
+                                            testResult.snowCondition
+                                        ]
+                                    }
+                                </Text>
+                            </VStack>
                         </HStack>
                     </Modal.Body>
-                    <Modal.Footer></Modal.Footer>
+                    <Modal.Footer>
+                        <Button
+                            onPress={() => {
+                                setShowModal(false);
+                            }}
+                        >
+                            Delete
+                        </Button>
+                    </Modal.Footer>
                 </Modal.Content>
             </Modal>
         </>
