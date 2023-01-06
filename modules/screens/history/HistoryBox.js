@@ -67,7 +67,9 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                                     {testResult.result.tapResult}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
-                                    {testResult.notes}
+                                    {testResult.notes !== null
+                                        ? testResult.notes
+                                        : 'No notes'}
                                 </StyledText>
                             </VStack>
                             <VStack>
