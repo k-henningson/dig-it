@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Center, VStack, Input, Button, Box, Heading, Text } from 'native-base';
 import { auth } from '../../../firebaseConfig';
+import { UserContext } from '../../../commons/initializers';
+import { saveGuestTestResultsToDb } from '../../../commons/utils/db-utils';
 
 // todo - remove duplication between login and signup
 export default function Login() {
@@ -9,20 +11,33 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
+    const { setGuestUser, setIsGuestSigningUp } = useContext(UserContext);
+
     const isValidEmail = email.length > 0;
 
     const isValidPassword = password.length >= 8; // todo - check firebase auth password requirements
 
     const canSubmit = isValidEmail && isValidPassword;
 
+    const clearFields = () => {
+        setEmail('');
+        setPassword('');
+        setError(null);
+    };
+
     const handlePress = () => {
         // todo - send verification email before signing up
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // todo - show success screen / animation after signing up
-                const user = userCredential.user;
+                saveGuestTestResultsToDb(userCredential.user).then(() => {
+                    clearFields();
+                    setGuestUser(null);
+                    setIsGuestSigningUp(false);
+                });
             })
             .catch((error) => {
+                console.log({ error });
                 setError(error);
             });
     };

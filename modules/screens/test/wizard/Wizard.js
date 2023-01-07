@@ -73,11 +73,14 @@ export default function Wizard({
                     console.log('err: ', err);
                 });
         } else {
-            setGuestUser((prev) => ({
-                ...prev,
+            setGuestUser((prevGuestUser) => ({
+                ...prevGuestUser,
                 testResults: [
-                    ...prev.testResults,
-                    { ...payload, timestamp: Timestamp.now() }, // todo - fix timestamp storing for guest users
+                    ...prevGuestUser.testResults,
+                    {
+                        ...payload,
+                        timestamp: new Date(),
+                    },
                 ],
             }));
         }

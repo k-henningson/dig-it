@@ -59,7 +59,7 @@ export default function HistoryPage() {
                                     {testResult.title}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
-                                    {formatDate(testResult)}
+                                    {formatDate(testResult.timestamp)}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
                                     {testResult.type}

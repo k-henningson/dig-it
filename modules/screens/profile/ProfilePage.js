@@ -38,7 +38,7 @@ export default function ProfilePage() {
 
     const { user } = useAuth();
 
-    const { setGuestUser } = useContext(UserContext);
+    const { setGuestUser, setIsGuestSigningUp } = useContext(UserContext);
 
     const logout = () => {
         if (!user) {
@@ -46,6 +46,10 @@ export default function ProfilePage() {
         } else {
             auth.signOut();
         }
+    };
+
+    const handleSignup = () => {
+        setIsGuestSigningUp(true);
     };
 
     return (
@@ -137,9 +141,17 @@ export default function ProfilePage() {
                         <Ionicons name="mail-open" size={24} color="black" />
                     </HStack>
                 </ProfileBox>
+                {!user && (
+                    <ProfileBox>
+                        <Button onPress={handleSignup}>Create account</Button>
+                    </ProfileBox>
+                )}
+                {/* todo - below is commented to be able for us to erase guest data for testing, uncomment before releasing */}
+                {/* {user && ( */}
                 <ProfileBox>
                     <Button onPress={logout}>Sign out</Button>
                 </ProfileBox>
+                {/* )} */}
             </View>
         </ScrollView>
     );

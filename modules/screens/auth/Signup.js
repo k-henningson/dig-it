@@ -1,7 +1,12 @@
-import { useState } from 'react';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { useContext, useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Center, VStack, Input, Button, Box, Heading, Text } from 'native-base';
-import { auth } from '../../../firebaseConfig';
+import { auth, db } from '../../../firebaseConfig';
+import { getAyncStorageData } from '../../../commons/utils/storage-utils';
+import { collection, doc, setDoc, writeBatch } from 'firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
+import { UserContext } from '../../../commons/initializers';
+import { saveGuestTestResultsToDb } from '../../../commons/utils/db-utils';
 
 export default function Signup() {
     const [email, setEmail] = useState('');
@@ -11,6 +16,9 @@ export default function Signup() {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [error, setError] = useState(null);
 
+    const { guestUser, setGuestUser, setIsGuestSigningUp } =
+        useContext(UserContext);
+
     const isValidEmail = email.length > 0;
 
     const isValidPassword =
@@ -18,22 +26,49 @@ export default function Signup() {
 
     const canSubmit = isValidEmail && isValidPassword;
 
-    const handlePress = () => {
+    const clearFields = () => {
+        // todo - refactor into single object
+        setEmail('');
+        setPassword('');
+        setFirstName('');
+        setLastName('');
+        setPasswordConfirmation('');
+        setError(null);
+    };
+
+    const navigation = useNavigation();
+
+    const handlePress = async () => {
         // todo - send verification email before signing up
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // todo - show success screen / animation after signing up
-                const user = userCredential.user;
-                console.log({ user });
-                updateProfile(user, {
-                    displayName: `${firstName} ${lastName}`,
-                })
-                    .then(console.log)
-                    .catch((error) => setError(error));
-            })
-            .catch((error) => {
-                setError(error);
+        try {
+            // create user in firebase auth
+            const { user } = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            // create user in users collection
+            await setDoc(doc(db, 'users', user.uid), {
+                userId: user.uid,
+                email: user.email,
+                firstName: firstName,
+                lastName: lastName,
             });
+
+            // save users existing results in db if they were a guest user
+            if (guestUser) {
+                await saveGuestTestResultsToDb(user);
+                setGuestUser(null);
+                setIsGuestSigningUp(false);
+            } else {
+                navigation.navigate('Home');
+            }
+            clearFields();
+        } catch (error) {
+            console.log('error: ', error);
+            setError(error);
+        }
     };
 
     return (

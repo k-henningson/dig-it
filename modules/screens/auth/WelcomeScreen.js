@@ -1,20 +1,26 @@
 import { useContext } from 'react';
 import { Center, Box, Heading, Button } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-import { AUTH_SCREENS } from './Auth';
+import { AUTH_SCREENS } from '../../../commons/constants/routes';
 import { UserContext } from '../../../commons/initializers';
 
 export default function WelcomeScreen() {
-    const { setGuestUser } = useContext(UserContext);
-
-    const handlePress = () => {
-        setGuestUser({
-            isGuest: true,
-            testResults: [],
-        });
-    };
+    const { guestUser, setGuestUser, setIsGuestSigningUp } =
+        useContext(UserContext);
 
     const navigation = useNavigation();
+
+    const handleGuestLogin = () => {
+        // if user has already made progress as a guest, we don't want to erase their tests
+        if (!guestUser) {
+            setGuestUser({
+                isGuest: true,
+                testResults: [],
+            });
+        }
+
+        setIsGuestSigningUp(false);
+    };
 
     return (
         <Center w="100%" h="100%" display="flex">
@@ -35,8 +41,8 @@ export default function WelcomeScreen() {
                 >
                     Sign in
                 </Button>
-                <Button mt="2" onPress={handlePress}>
-                    Continue as guest
+                <Button mt="2" onPress={handleGuestLogin}>
+                    {guestUser ? 'Go back' : 'Continue as guest'}
                 </Button>
             </Box>
         </Center>
