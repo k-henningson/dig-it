@@ -1,10 +1,17 @@
 import { Modal, Button, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useContext, useState } from 'react';
+import {
+    collection,
+    addDoc,
+    serverTimestamp,
+    Timestamp,
+} from 'firebase/firestore';
 import { db } from '../../../../firebaseConfig';
 import SuccessStep from '../all-tests/SuccessStep';
 import ProgressBar from './ProgressBar';
+import { useAuth } from '../../../../commons/hooks/useAuth';
+import { UserContext } from '../../../../commons/initializers';
 
 export default function Wizard({
     isVisible,
@@ -14,6 +21,10 @@ export default function Wizard({
     testData,
 }) {
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
+
+    const { setGuestUser } = useContext(UserContext);
+
+    const { user } = useAuth();
 
     const stepsWithFinalStep = [
         ...children.filter((step) => typeof step === 'object' && step !== null),
@@ -32,7 +43,7 @@ export default function Wizard({
             : setCurrentStepIndex((index) => (index -= 1));
 
     const handleSubmit = () => {
-        addDoc(collection(db, 'testResults'), {
+        const payload = {
             result: {
                 tapResult: testData.tapResult,
                 tapNumber: testData.tapNumber,
@@ -44,17 +55,36 @@ export default function Wizard({
             title: testData.title,
             location: testData.location,
             images: testData.images,
-            timestamp: serverTimestamp(),
             notes: testData.notes,
-        })
-            .then((data) => {
-                // TODO show success
-                console.log('data: ', data);
+        };
+
+        if (user) {
+            addDoc(collection(db, 'testResults'), {
+                ...payload,
+                userId: user.uid,
+                timestamp: serverTimestamp(),
             })
-            .catch((err) => {
-                // TODO add error handling
-                console.log('err: ', err);
-            });
+                .then((data) => {
+                    // TODO show success
+                    console.log('data: ', data);
+                })
+                .catch((err) => {
+                    // TODO add error handling
+                    console.log('err: ', err);
+                });
+        } else {
+            setGuestUser((prevGuestUser) => ({
+                ...prevGuestUser,
+                testResults: [
+                    ...prevGuestUser.testResults,
+                    {
+                        ...payload,
+                        timestamp: new Date(),
+                    },
+                ],
+            }));
+        }
+
         handleClose();
     };
 
