@@ -8,7 +8,7 @@ import { SNOW_CONDITION_EMOJIS } from '../../../commons/constants/conditions';
 
 export default function HistoryBox({ children, testResult, deleteTestResult }) {
     const [showModal, setShowModal] = useState(false);
-    console.log(testResult);
+
     return (
         <>
             <Pressable
@@ -44,7 +44,7 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                             {testResult.title}
                         </StyledText>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body padding={5}>
                         <HStack justifyContent="space-around" space={20}>
                             <VStack
                                 justifyContent="space-between"
@@ -61,15 +61,17 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                                     {testResult.result.fractureType}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
-                                    {testResult.result.tapNumber}
+                                    {testResult.result.tapNumber !== null
+                                        ? testResult.result.tapNumber
+                                        : 'Taps N/A'}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
                                     {testResult.result.tapResult}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
-                                    {testResult.notes !== null
+                                    {testResult.notes !== ''
                                         ? testResult.notes
-                                        : 'No notes'}
+                                        : 'No notes recorded'}
                                 </StyledText>
                             </VStack>
                             <VStack>
