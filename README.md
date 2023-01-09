@@ -46,4 +46,32 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 ### Setup
 
-TBD
+1. Clone the repo (HTTPS or SSH)
+
+```sh
+https://github.com/k-henningson/dig-it.git
+```
+
+```sh
+git@github.com:k-henningson/dig-it.git
+```
+
+2. Install dependencies
+
+```sh
+npm install
+```
+
+3. Download Expo Go to your mobile device (this project currently runs on iOS only)
+
+```sh
+https://expo.dev/client
+```
+
+4. Start
+
+```sh
+npm run start
+```
+
+5. Scan the QR code in your terminal
