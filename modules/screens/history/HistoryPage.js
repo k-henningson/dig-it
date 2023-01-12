@@ -7,7 +7,7 @@ import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
 import HistoryBox from './HistoryBox';
 import formatDate from '../../../commons/utils/date-utils';
-import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
+import { WEATHER_CONDITIONS } from '../../../commons/constants/weather';
 
 export default function HistoryPage() {
     const [testResults, setTestResults] = useState([]);
@@ -70,7 +70,7 @@ export default function HistoryPage() {
                                 </StyledText>
                             </VStack>
                             <Text fontSize={40}>
-                                {WEATHER_EMOJIS[testResult.weather]}
+                                {WEATHER_CONDITIONS[testResult.weather].emoji}
                             </Text>
                         </HStack>
                     </HistoryBox>

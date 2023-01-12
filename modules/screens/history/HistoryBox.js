@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import StyledText from '../../components/StyledText/StyledText';
 import formatDate from '../../../commons/utils/date-utils';
-import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
+import { WEATHER_CONDITIONS } from '../../../commons/constants/weather';
 import { SNOW_CONDITIONS } from '../../../commons/constants/conditions';
 
 export default function HistoryBox({ children, testResult, deleteTestResult }) {
@@ -76,7 +76,10 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                             </VStack>
                             <VStack>
                                 <Text fontSize={40}>
-                                    {WEATHER_EMOJIS[testResult.weather]}
+                                    {
+                                        WEATHER_CONDITIONS[testResult.weather]
+                                            .emoji
+                                    }
                                 </Text>
                                 <Text fontSize={40}>
                                     {
