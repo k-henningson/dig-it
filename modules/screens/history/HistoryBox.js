@@ -4,7 +4,7 @@ import { useState } from 'react';
 import StyledText from '../../components/StyledText/StyledText';
 import formatDate from '../../../commons/utils/date-utils';
 import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
-import { SNOW_CONDITION_EMOJIS } from '../../../commons/constants/conditions';
+import { SNOW_CONDITIONS } from '../../../commons/constants/conditions';
 
 export default function HistoryBox({ children, testResult, deleteTestResult }) {
     const [showModal, setShowModal] = useState(false);
@@ -80,9 +80,9 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                                 </Text>
                                 <Text fontSize={40}>
                                     {
-                                        SNOW_CONDITION_EMOJIS[
+                                        SNOW_CONDITIONS[
                                             testResult.snowCondition
-                                        ]
+                                        ].emoji
                                     }
                                 </Text>
                             </VStack>
