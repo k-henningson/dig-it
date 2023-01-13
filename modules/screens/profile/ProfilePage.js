@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { View } from 'react-native';
-import { HStack, Switch, Radio, ScrollView } from 'native-base';
+import {
+    HStack,
+    Switch,
+    Radio,
+    ScrollView,
+    Button,
+    Heading,
+} from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import StyledText from '../../components/StyledText/StyledText';
 import ProfileBox from './ProfileBox';
 import { useTheme } from '../../../commons/hooks/theme';
 import { themes, THEME_NAMES } from '../../../commons/constants/themes';
+import { auth } from '../../../firebaseConfig';
+import { useAuth } from '../../../commons/hooks/useAuth';
+import { UserContext } from '../../../commons/initializers';
 
 const MEASUREMENT_UNITS = {
     Fahrenheit: 'Fahrenheit',
@@ -15,8 +25,6 @@ const MEASUREMENT_UNITS = {
 };
 
 export default function ProfilePage() {
-    const { theme, setTheme } = useTheme();
-
     const [temperatureUnits, setTemperatureUnits] = useState(
         MEASUREMENT_UNITS.Fahrenheit
     );
@@ -24,6 +32,25 @@ export default function ProfilePage() {
     const [distanceUnits, setDistanceUnits] = useState(
         MEASUREMENT_UNITS.Imperial
     );
+
+    const { theme, setTheme } = useTheme();
+
+    const { user } = useAuth();
+
+    const { setGuestUser, setIsGuestSigningUp } = useContext(UserContext);
+
+    const logout = () => {
+        if (!user) {
+            setGuestUser(null);
+        } else {
+            auth.signOut();
+        }
+    };
+
+    const handleSignup = () => {
+        setIsGuestSigningUp(true);
+    };
+
     return (
         <ScrollView>
             <View
@@ -33,6 +60,10 @@ export default function ProfilePage() {
                     justifyContent: 'center',
                 }}
             >
+                <Heading margin="14px">
+                    Hi {user && user.displayName ? user.displayName : 'there'}{' '}
+                    👋
+                </Heading>
                 <ProfileBox>
                     <HStack alignItems="center" space={4}>
                         <StyledText>Novice</StyledText>
@@ -109,6 +140,17 @@ export default function ProfilePage() {
                         <Ionicons name="mail-open" size={24} color="black" />
                     </HStack>
                 </ProfileBox>
+                {!user && (
+                    <ProfileBox>
+                        <Button onPress={handleSignup}>Create account</Button>
+                    </ProfileBox>
+                )}
+                {/* todo - below is commented to be able for us to erase guest data for testing, uncomment before releasing */}
+                {/* {user && ( */}
+                <ProfileBox>
+                    <Button onPress={logout}>Sign out</Button>
+                </ProfileBox>
+                {/* )} */}
             </View>
         </ScrollView>
     );
