@@ -2,8 +2,7 @@ import { useContext, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Center, VStack, Input, Button, Box, Heading, Text } from 'native-base';
 import { auth, db } from '../../../firebaseConfig';
-import { getAyncStorageData } from '../../../commons/utils/storage-utils';
-import { collection, doc, setDoc, writeBatch } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../../commons/initializers';
 import { saveGuestTestResultsToDb } from '../../../commons/utils/db-utils';
@@ -19,7 +18,7 @@ export default function Signup() {
     const { guestUser, setGuestUser, setIsGuestSigningUp } =
         useContext(UserContext);
 
-    const isValidEmail = email.length > 0;
+    const isValidEmail = email.length > 0; // todo - proper email validation
 
     const isValidPassword =
         password.length >= 8 && password === passwordConfirmation;

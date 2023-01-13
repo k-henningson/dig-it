@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, View, extendTheme } from 'native-base';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeContext, UserContext } from './commons/initializers';
 import { themes } from './commons/constants/themes';
 import { useAuth } from './commons/hooks/useAuth';
@@ -14,7 +15,6 @@ import {
 } from './commons/utils/storage-utils';
 import Main from './modules/screens/Main';
 import { AUTH_SCREENS } from './commons/constants/routes';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './modules/screens/auth/WelcomeScreen';
 import Login from './modules/screens/auth/Login';
 import Signup from './modules/screens/auth/Signup';

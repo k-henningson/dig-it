@@ -38,40 +38,43 @@ export default function HistoryPage() {
         }
     }, [isFocused, user]);
 
-    return (
-        <ScrollView>
-            <View
-                style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                {testResults.map((testResult, index) => (
-                    <HistoryBox key={testResult.id || index}>
-                        <HStack justifyContent="space-around" space={20}>
-                            <VStack
-                                justifyContent="space-between"
-                                space={2}
-                                alignItems="left"
-                            >
-                                <StyledText fontWeight="medium">
-                                    {testResult.title}
-                                </StyledText>
-                                <StyledText color="blueGray.600">
-                                    {formatDate(testResult.timestamp)}
-                                </StyledText>
-                                <StyledText color="blueGray.600">
-                                    {testResult.type}
-                                </StyledText>
-                            </VStack>
-                            <Text fontSize={40}>
-                                {WEATHER_EMOJIS[testResult.weather]}
-                            </Text>
-                        </HStack>
-                    </HistoryBox>
-                ))}
-            </View>
+    return testResults.length > 0 ? (
+        <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+            {testResults.map((testResult, index) => (
+                <HistoryBox key={testResult.id || index}>
+                    <HStack justifyContent="space-around" space={20}>
+                        <VStack
+                            justifyContent="space-between"
+                            space={2}
+                            alignItems="left"
+                        >
+                            <StyledText fontWeight="medium">
+                                {testResult.title}
+                            </StyledText>
+                            <StyledText color="blueGray.600">
+                                {formatDate(testResult.timestamp)}
+                            </StyledText>
+                            <StyledText color="blueGray.600">
+                                {testResult.type}
+                            </StyledText>
+                        </VStack>
+                        <Text fontSize={40}>
+                            {WEATHER_EMOJIS[testResult.weather]}
+                        </Text>
+                    </HStack>
+                </HistoryBox>
+            ))}
         </ScrollView>
+    ) : (
+        <View
+            style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}
+        >
+            <StyledText>No tests recorded yet!</StyledText>
+        </View>
     );
 }

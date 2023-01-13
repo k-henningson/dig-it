@@ -3,10 +3,10 @@ export default function formatDate(timestamp) {
         let dateObj;
 
         // toDate is a firestore specific property on timestamp
-        if ('toDate' in timestamp) {
+        if (typeof timestamp === 'object' && 'toDate' in timestamp) {
             dateObj = timestamp.toDate();
         } else {
-            dateObj = timestamp;
+            dateObj = new Date(timestamp);
         }
 
         const day = dateObj.getDay();
@@ -38,6 +38,7 @@ export default function formatDate(timestamp) {
         ];
         return `${DAYS[day]}, ${date} ${MONTHS[month].slice(0, 3)}`;
     } catch (error) {
+        console.log(error);
         return 'No date available';
     }
 }

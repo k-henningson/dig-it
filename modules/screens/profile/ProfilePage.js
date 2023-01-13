@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { View } from 'react-native';
-// import { getAuth } from 'firebase/auth';
 import {
     HStack,
     Switch,

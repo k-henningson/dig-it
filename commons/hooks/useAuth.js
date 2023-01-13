@@ -6,7 +6,7 @@ export function useAuth() {
     const [user, setUser] = useState();
 
     useEffect(() => {
-        const unsubscribeFromAuthStatuChanged = onAuthStateChanged(
+        const unsubscribeFromAuthStateChanged = onAuthStateChanged(
             auth,
             (user) => {
                 if (user) {
@@ -18,7 +18,7 @@ export function useAuth() {
             }
         );
 
-        return unsubscribeFromAuthStatuChanged;
+        return unsubscribeFromAuthStateChanged;
     }, []);
 
     return {

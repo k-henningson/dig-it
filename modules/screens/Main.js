@@ -1,10 +1,10 @@
+import { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import HistoryPage from './history/HistoryPage';
 import ProfilePage from './profile/ProfilePage';
 import TestPage from './test/TestPage';
 import UpgradePage from './upgrade/UpgradePage';
-import { useContext } from 'react';
 import { ThemeContext } from '../../commons/initializers';
 
 const Tab = createBottomTabNavigator();
