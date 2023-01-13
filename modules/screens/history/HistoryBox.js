@@ -52,7 +52,7 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                                 alignItems="left"
                             >
                                 <StyledText color="blueGray.600">
-                                    {formatDate(testResult)}
+                                    {formatDate(testResult.timestamp)}
                                 </StyledText>
                                 <StyledText color="blueGray.600">
                                     {testResult.type}

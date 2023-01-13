@@ -23,9 +23,11 @@ export default function HistoryPage() {
 
     const { user } = useAuth();
 
-    const { guestUser } = useContext(UserContext);
+    const { guestUser, setGuestUser } = useContext(UserContext);
 
     const isFocused = useIsFocused();
+
+    console.log(JSON.stringify(testResults, null, 4));
 
     useEffect(() => {
         if (isFocused && user) {
@@ -43,19 +45,26 @@ export default function HistoryPage() {
         } else if (guestUser) {
             setTestResults(guestUser.testResults);
         }
-    }, [isFocused, user]);
+    }, [isFocused, user, guestUser]);
 
     const deleteTestResult = function (id) {
-        deleteDoc(doc(db, 'testResults', id))
-            .then(() => {
-                const results = testResults.filter((test) => {
-                    return test.id !== id;
+        if (user) {
+            deleteDoc(doc(db, 'testResults', id))
+                .then(() => {
+                    const results = testResults.filter((test) => {
+                        return test.id !== id;
+                    });
+                    setTestResults(results);
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
-                setTestResults(results);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        } else {
+            setGuestUser((prev) => ({
+                ...prev,
+                testResults: prev.testResults.filter((test) => test.id !== id),
+            }));
+        }
     };
 
     return testResults.length > 0 ? (
