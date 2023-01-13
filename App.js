@@ -1,32 +1,46 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeBaseProvider, View, extendTheme } from 'native-base';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import ProfilePage from './modules/screens/profile/ProfilePage';
-import HistoryPage from './modules/screens/history/HistoryPage';
-import TestPage from './modules/screens/test/TestPage';
-import UpgradePage from './modules/screens/upgrade/UpgradePage';
-import { ThemeContext } from './commons/initializers';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ThemeContext, UserContext } from './commons/initializers';
 import { themes } from './commons/constants/themes';
+import { useAuth } from './commons/hooks/useAuth';
+import {
+    getAyncStorageData,
+    setAsyncStorageData,
+} from './commons/utils/storage-utils';
+import Main from './modules/screens/Main';
+import { AUTH_SCREENS } from './commons/constants/routes';
+import WelcomeScreen from './modules/screens/auth/WelcomeScreen';
+import Login from './modules/screens/auth/Login';
+import Signup from './modules/screens/auth/Signup';
 
-const Tab = createBottomTabNavigator();
 SplashScreen.preventAutoHideAsync();
 
-const ROUTE_ICONS = {
-    ProfilePage: 'person',
-    HistoryPage: 'list',
-    TestPage: 'add',
-    UpgradePage: 'cafe',
-};
+export const Stack = createNativeStackNavigator();
 
 export default function App() {
     const [theme, setTheme] = useState(themes.light);
+    const [guestUser, setGuestUser] = useState(null);
+    const [isGuestSigningUp, setIsGuestSigningUp] = useState(false);
+
     const nativeBaseTheme = extendTheme(theme);
+
+    const { user } = useAuth();
+
+    useEffect(() => {
+        getAyncStorageData('guestUser').then((res) => {
+            setGuestUser(res);
+        });
+    }, []);
+
+    useEffect(() => {
+        setAsyncStorageData('guestUser', guestUser);
+    }, [guestUser]);
 
     const [fontsLoaded] = useFonts({
         'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
@@ -39,77 +53,63 @@ export default function App() {
         }
     }, [fontsLoaded]);
 
-    if (!fontsLoaded) {
-        return null;
-    }
+    const showSignup = (!user && !guestUser) || isGuestSigningUp;
+
+    const isAppReady = fontsLoaded;
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme }}>
-            <NativeBaseProvider theme={nativeBaseTheme}>
-                <View style={styles.container} onLayout={onLayoutRootView}>
-                    <StatusBar style={theme.statusBar} />
-                    <NavigationContainer
-                        style={styles.container}
-                        theme={{
-                            colors: {
-                                background: theme.background,
-                                card: theme.background,
-                                text: theme.foreground,
-                            },
-                        }}
-                    >
-                        <Tab.Navigator
-                            screenOptions={({ route }) => ({
-                                tabBarIcon: ({ focused, color, size }) => {
-                                    return (
-                                        <Ionicons
-                                            name={`${ROUTE_ICONS[route.name]}${
-                                                !focused ? '-outline' : ''
-                                            }`}
-                                            size={size}
-                                            color={color}
-                                        />
-                                    );
+        isAppReady && (
+            <UserContext.Provider
+                value={{ guestUser, setGuestUser, setIsGuestSigningUp }}
+            >
+                <ThemeContext.Provider value={{ theme, setTheme }}>
+                    <NativeBaseProvider theme={nativeBaseTheme}>
+                        <NavigationContainer
+                            style={styles.container}
+                            theme={{
+                                colors: {
+                                    background: theme.background,
+                                    card: theme.background,
+                                    text: theme.foreground,
                                 },
-                                tabBarActiveTintColor:
-                                    theme.colors.primary['600'],
-                                tabBarInactiveTintColor: 'gray',
-                                headerTitleAlign: 'left',
-                                headerStyle: {
-                                    borderBottomWidth: 0,
-                                    shadowOpacity: 0.2,
-                                },
-                                headerTitleStyle: {
-                                    fontSize: 30,
-                                    fontWeight: 'bold',
-                                },
-                            })}
+                            }}
                         >
-                            <Tab.Screen
-                                name="ProfilePage"
-                                component={ProfilePage}
-                                options={{ title: 'Profile' }}
-                            />
-                            <Tab.Screen
-                                name="HistoryPage"
-                                component={HistoryPage}
-                                options={{ title: 'History' }}
-                            />
-                            <Tab.Screen
-                                name="TestPage"
-                                component={TestPage}
-                                options={{ title: 'New Test' }}
-                            />
-                            <Tab.Screen
-                                name="UpgradePage"
-                                component={UpgradePage}
-                                options={{ title: 'Upgrade' }}
-                            />
-                        </Tab.Navigator>
-                    </NavigationContainer>
-                </View>
-            </NativeBaseProvider>
-        </ThemeContext.Provider>
+                            <View
+                                style={styles.container}
+                                onLayout={onLayoutRootView}
+                            >
+                                <StatusBar style={theme.statusBar} />
+                                <Stack.Navigator>
+                                    {!showSignup ? (
+                                        <Stack.Screen
+                                            name="Home"
+                                            component={Main}
+                                            options={{ headerShown: false }}
+                                        />
+                                    ) : (
+                                        <Stack.Group>
+                                            <Stack.Screen
+                                                name={AUTH_SCREENS.WELCOME}
+                                                component={WelcomeScreen}
+                                                options={{ headerShown: false }}
+                                            />
+                                            <Stack.Screen
+                                                name={AUTH_SCREENS.SIGN_IN}
+                                                component={Login}
+                                            />
+                                            <Stack.Screen
+                                                name={AUTH_SCREENS.SIGN_UP}
+                                                component={Signup}
+                                            />
+                                        </Stack.Group>
+                                    )}
+                                </Stack.Navigator>
+                            </View>
+                        </NavigationContainer>
+                    </NativeBaseProvider>
+                </ThemeContext.Provider>
+            </UserContext.Provider>
+        )
     );
 }
 
