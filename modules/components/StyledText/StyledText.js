@@ -19,6 +19,6 @@ export default function StyledText(props) {
 }
 
 StyledText.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     styles: PropTypes.object,
 };

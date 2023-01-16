@@ -7,9 +7,17 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 <br></br>
 
-## Product - as of December 2022
+## Product - as of January 2022
 
 <table>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part1.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part2.gif?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part3.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part4.gif?raw=true"></td>
+  </tr>
   <tr>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8128.PNG?raw=true"></td>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8131.PNG?raw=true"></td>
@@ -46,4 +54,32 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 ### Setup
 
-TBD
+1. Clone the repo (HTTPS or SSH)
+
+```sh
+https://github.com/k-henningson/dig-it.git
+```
+
+```sh
+git@github.com:k-henningson/dig-it.git
+```
+
+2. Install dependencies
+
+```sh
+npm install
+```
+
+3. Download Expo Go to your mobile device (this project currently runs on iOS only)
+
+```sh
+https://expo.dev/client
+```
+
+4. Start
+
+```sh
+npm run start
+```
+
+5. Scan the QR code in your terminal

@@ -1,5 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+    collection,
+    getDocs,
+    query,
+    where,
+    deleteDoc,
+    doc,
+} from 'firebase/firestore';
 import { View } from 'react-native';
 import { VStack, ScrollView, HStack, Text } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
@@ -7,7 +14,7 @@ import { db } from '../../../firebaseConfig';
 import StyledText from '../../components/StyledText/StyledText';
 import HistoryBox from './HistoryBox';
 import formatDate from '../../../commons/utils/date-utils';
-import { WEATHER_EMOJIS } from '../../../commons/constants/weather';
+import { WEATHER_CONDITIONS } from '../../../commons/constants/weather';
 import { useAuth } from '../../../commons/hooks/useAuth';
 import { UserContext } from '../../../commons/initializers';
 
@@ -16,7 +23,7 @@ export default function HistoryPage() {
 
     const { user } = useAuth();
 
-    const { guestUser } = useContext(UserContext);
+    const { guestUser, setGuestUser } = useContext(UserContext);
 
     const isFocused = useIsFocused();
 
@@ -36,12 +43,36 @@ export default function HistoryPage() {
         } else if (guestUser) {
             setTestResults(guestUser.testResults);
         }
-    }, [isFocused, user]);
+    }, [isFocused, user, guestUser]);
+
+    const deleteTestResult = function (id) {
+        if (user) {
+            deleteDoc(doc(db, 'testResults', id))
+                .then(() => {
+                    const results = testResults.filter((test) => {
+                        return test.id !== id;
+                    });
+                    setTestResults(results);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            setGuestUser((prev) => ({
+                ...prev,
+                testResults: prev.testResults.filter((test) => test.id !== id),
+            }));
+        }
+    };
 
     return testResults.length > 0 ? (
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
             {testResults.map((testResult, index) => (
-                <HistoryBox key={testResult.id || index}>
+                <HistoryBox
+                    key={testResult.id || index}
+                    testResult={testResult}
+                    deleteTestResult={deleteTestResult}
+                >
                     <HStack justifyContent="space-around" space={20}>
                         <VStack
                             justifyContent="space-between"
@@ -59,7 +90,7 @@ export default function HistoryPage() {
                             </StyledText>
                         </VStack>
                         <Text fontSize={40}>
-                            {WEATHER_EMOJIS[testResult.weather]}
+                            {WEATHER_CONDITIONS[testResult.weather].emoji}
                         </Text>
                     </HStack>
                 </HistoryBox>

@@ -1,17 +1,17 @@
 import { Modal, Button, Center, Box } from 'native-base';
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
-import {
-    collection,
-    addDoc,
-    serverTimestamp,
-    Timestamp,
-} from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../../../firebaseConfig';
 import SuccessStep from '../all-tests/SuccessStep';
 import ProgressBar from './ProgressBar';
 import { useAuth } from '../../../../commons/hooks/useAuth';
 import { UserContext } from '../../../../commons/initializers';
+
+const randomId = function () {
+    //todo make a better random id generator
+    return Math.floor(Math.random() * 10000000);
+};
 
 export default function Wizard({
     isVisible,
@@ -79,6 +79,7 @@ export default function Wizard({
                     ...prevGuestUser.testResults,
                     {
                         ...payload,
+                        id: randomId(),
                         timestamp: new Date(),
                     },
                 ],
