@@ -27,8 +27,6 @@ export default function HistoryPage() {
 
     const isFocused = useIsFocused();
 
-    console.log(JSON.stringify(testResults, null, 4));
-
     useEffect(() => {
         if (isFocused && user) {
             getDocs(
