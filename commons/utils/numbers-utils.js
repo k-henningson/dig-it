@@ -1,5 +1,5 @@
 export const generateNumberRange = ({ start, end }) => {
-    let nums = [];
+    const nums = [];
     for (let i = start; i <= end; i++) {
         nums.push(i);
     }

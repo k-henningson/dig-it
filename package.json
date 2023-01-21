@@ -8,7 +8,14 @@
         "ios": "expo start --ios",
         "web": "expo start --web",
         "prepare": "husky install",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "test": "jest"
+    },
+    "jest": {
+        "preset": "jest-expo",
+        "transformIgnorePatterns": [
+            "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+        ]
     },
     "dependencies": {
         "@expo/webpack-config": "^0.17.2",
@@ -25,6 +32,8 @@
         "expo-splash-screen": "~0.17.5",
         "expo-status-bar": "~1.4.2",
         "firebase": "^9.14.0",
+        "jest": "^26.6.3",
+        "jest-expo": "^47.0.1",
         "moti": "^0.21.0",
         "native-base": "^3.4.22",
         "prop-types": "^15.8.1",
