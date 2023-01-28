@@ -93,6 +93,7 @@ export default function HistoryBox({ children, testResult, deleteTestResult }) {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button
+                            colorScheme="red"
                             onPress={() => {
                                 deleteTestResult(testResult.id);
                                 setShowModal(false);
