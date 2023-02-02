@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { Center, VStack, Input, Button, Box, Heading, Text } from 'native-base';
 import { auth, db } from '../../../firebaseConfig';
 import { doc, setDoc } from 'firebase/firestore';
@@ -46,6 +46,10 @@ export default function Signup() {
                 email,
                 password
             );
+
+            await updateProfile(user, {
+                displayName: `${firstName} ${lastName}`,
+            });
 
             // create user in users collection
             await setDoc(doc(db, 'users', user.uid), {
