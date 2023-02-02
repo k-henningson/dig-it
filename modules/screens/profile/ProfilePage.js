@@ -53,11 +53,11 @@ export default function ProfilePage() {
                     });
                     setChartData(formatDataForChart(resData));
                 });
-            } else {
+            } else if (guestUser) {
                 setChartData(formatDataForChart(guestUser.testResults));
             }
         }
-    }, [isFocused]);
+    }, [isFocused, user, guestUser]);
 
     const logout = () => {
         if (!user) {
