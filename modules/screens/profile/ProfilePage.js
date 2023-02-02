@@ -1,43 +1,63 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { View } from 'react-native';
-import {
-    HStack,
-    Switch,
-    Radio,
-    ScrollView,
-    Button,
-    Heading,
-} from 'native-base';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import StyledText from '../../components/StyledText/StyledText';
-import ProfileBox from './ProfileBox';
-import { useTheme } from '../../../commons/hooks/theme';
-import { themes, THEME_NAMES } from '../../../commons/constants/themes';
-import { auth } from '../../../firebaseConfig';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { ScrollView, Heading, Button } from 'native-base';
+import { db } from '../../../firebaseConfig';
 import { useAuth } from '../../../commons/hooks/useAuth';
+import { useIsFocused } from '@react-navigation/native';
+import TestBarChartContainer from './TestBarChartContainer';
 import { UserContext } from '../../../commons/initializers';
+import { auth } from '../../../firebaseConfig';
 
-const MEASUREMENT_UNITS = {
-    Fahrenheit: 'Fahrenheit',
-    Imperial: 'Imperial',
-    Celsius: 'Celsius',
-    Metric: 'Metric',
-};
+const formatDataForChart = (data) =>
+    data.reduce((acc, curr) => {
+        const year = String(curr.timestamp.getFullYear());
+        const month = curr.timestamp.getMonth();
+
+        if (year in acc) {
+            acc[year][month] += 1;
+        } else {
+            acc[year] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            acc[year][month] = 1;
+        }
+        return acc;
+    }, {});
 
 export default function ProfilePage() {
-    const [temperatureUnits, setTemperatureUnits] = useState(
-        MEASUREMENT_UNITS.Fahrenheit
-    );
-
-    const [distanceUnits, setDistanceUnits] = useState(
-        MEASUREMENT_UNITS.Imperial
-    );
-
-    const { theme, setTheme } = useTheme();
+    const [chartData, setChartData] = useState({});
 
     const { user } = useAuth();
 
-    const { setGuestUser, setIsGuestSigningUp } = useContext(UserContext);
+    const { guestUser, setGuestUser, setIsGuestSigningUp } =
+        useContext(UserContext);
+
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+        if (isFocused) {
+            if (user) {
+                // todo - find a proper way of using an aggregation query with firestore
+                //  or doing the computation on write
+                getDocs(
+                    query(
+                        collection(db, 'testResults'),
+                        where('userId', '==', user.uid)
+                    )
+                ).then((res) => {
+                    const resData = res.docs.map((doc) => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id,
+                            timestamp: doc.data().timestamp.toDate(),
+                        };
+                    });
+                    setChartData(formatDataForChart(resData));
+                });
+            } else {
+                setChartData(formatDataForChart(guestUser.testResults));
+            }
+        }
+    }, [isFocused]);
 
     const logout = () => {
         if (!user) {
@@ -56,100 +76,16 @@ export default function ProfilePage() {
             <View
                 style={{
                     flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
                 }}
             >
-                <Heading margin="14px">
-                    Hi {user && user.displayName ? user.displayName : 'there'}{' '}
-                    👋
-                </Heading>
-                <ProfileBox>
-                    <HStack alignItems="center" space={4}>
-                        <StyledText>Novice</StyledText>
-                        <Switch size="md" />
-                        <StyledText>Pro</StyledText>
-                    </HStack>
-                </ProfileBox>
-                <ProfileBox>
-                    <StyledText>Temperature</StyledText>
-                    <Radio.Group
-                        name="temperatureUnits"
-                        accessibilityLabel="temperature units"
-                        value={temperatureUnits}
-                        onChange={setTemperatureUnits}
-                    >
-                        <HStack alignItems="center" space={4}>
-                            <Radio
-                                colorScheme="primary"
-                                value={MEASUREMENT_UNITS.Fahrenheit}
-                                my={1}
-                            >
-                                {MEASUREMENT_UNITS.Fahrenheit}
-                            </Radio>
-                            <Radio value={MEASUREMENT_UNITS.Celsius} my={1}>
-                                {MEASUREMENT_UNITS.Celsius}
-                            </Radio>
-                        </HStack>
-                    </Radio.Group>
-                </ProfileBox>
-                <ProfileBox>
-                    <StyledText>Measurement</StyledText>
-                    <Radio.Group
-                        name="measurementUnits"
-                        accessibilityLabel="measurement units"
-                        value={distanceUnits}
-                        onChange={(nextValue) => setDistanceUnits(nextValue)}
-                    >
-                        <HStack alignItems="center" space={4}>
-                            <Radio value={MEASUREMENT_UNITS.Imperial} my={1}>
-                                {MEASUREMENT_UNITS.Imperial}
-                            </Radio>
-                            <Radio value={MEASUREMENT_UNITS.Metric} my={1}>
-                                {MEASUREMENT_UNITS.Metric}
-                            </Radio>
-                        </HStack>
-                    </Radio.Group>
-                </ProfileBox>
-                <ProfileBox>
-                    <HStack alignItems="center" space={4}>
-                        <StyledText>Light 💡</StyledText>
-                        <Switch
-                            size="md"
-                            isChecked={theme.name === THEME_NAMES.DARK}
-                            onToggle={() =>
-                                setTheme(
-                                    theme.name === THEME_NAMES.LIGHT
-                                        ? themes.dark
-                                        : themes.light
-                                )
-                            }
-                        />
-                        <StyledText>Dark 🌚</StyledText>
-                    </HStack>
-                </ProfileBox>
-                <ProfileBox>
-                    <StyledText>Get in touch</StyledText>
-                    <HStack alignItems="center" space={4}>
-                        <Ionicons
-                            name="logo-linkedin"
-                            size={24}
-                            color="black"
-                        />
-                        <Ionicons name="logo-github" size={24} color="black" />
-                        <Ionicons name="mail-open" size={24} color="black" />
-                    </HStack>
-                </ProfileBox>
+                {user && <Heading margin="14px">{user.displayName}</Heading>}
+                <TestBarChartContainer chartData={chartData} />
                 {!user && (
-                    <ProfileBox>
-                        <Button onPress={handleSignup}>Create account</Button>
-                    </ProfileBox>
+                    <Button onPress={handleSignup}>Create account</Button>
                 )}
                 {/* todo - below is commented to be able for us to erase guest data for testing, uncomment before releasing */}
                 {/* {user && ( */}
-                <ProfileBox>
-                    <Button onPress={logout}>Sign out</Button>
-                </ProfileBox>
+                <Button onPress={logout}>Sign out</Button>
                 {/* )} */}
             </View>
         </ScrollView>
