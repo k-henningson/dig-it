@@ -53,7 +53,7 @@ export default function ProfilePage() {
                     });
                     setChartData(formatDataForChart(resData));
                 });
-            } else {
+            } else if (guestUser) {
                 setChartData(formatDataForChart(guestUser.testResults));
             }
         }
