@@ -11,20 +11,24 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 <table>
   <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part1.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part2.gif?raw=true"></td>
   </tr>
   <tr>
     <td><img src=></td>
     <td><img src=></td>
   </tr>
-  <tr>
+   <tr>
     <td><img src=></td>
+    <td><img src=></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/welcomePage.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/signUp.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/profilePage.PNG?raw=true"></td>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyTests.PNG?raw=true"></td>
-  </tr>
-  <tr>
-    <td><img src=></td>
-    <td><img src=></td>
   </tr>
   <tr>
     <td><img src=></td>
