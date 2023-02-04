@@ -48,16 +48,16 @@ export default function LocationStep({ location, setLocation }) {
                         longitudeDelta,
                         latitudeDelta,
                     }}
+                    onPress={(event) =>
+                        setLocation(event.nativeEvent.coordinate)
+                    }
                 >
                     <Marker
                         coordinate={{
                             latitude: location.latitude,
                             longitude: location.longitude,
                         }}
-                        draggable
-                        onDragEnd={(e) => {
-                            setLocation(e.nativeEvent.coordinate);
-                        }}
+                        redraw
                     >
                         <Callout tooltip>
                             <StyledText>Snow pit ❄️</StyledText>
