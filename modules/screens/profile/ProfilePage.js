@@ -80,13 +80,30 @@ export default function ProfilePage() {
             >
                 {user && <Heading margin="14px">{user.displayName}</Heading>}
                 <TestBarChartContainer chartData={chartData} />
-                {!user && (
-                    <Button onPress={handleSignup}>Create account</Button>
-                )}
-                {/* todo - below is commented to be able for us to erase guest data for testing, uncomment before releasing */}
-                {/* {user && ( */}
-                <Button onPress={logout}>Sign out</Button>
-                {/* )} */}
+                <View
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    {!user && (
+                        <Button
+                            style={{ width: '40%', margin: 2 }}
+                            onPress={handleSignup}
+                        >
+                            Create account
+                        </Button>
+                    )}
+                    {/* todo - below is commented to be able for us to erase guest data for testing, uncomment before releasing */}
+                    {/* {user && ( */}
+                    <Button
+                        style={{ width: '40%', margin: 2 }}
+                        onPress={logout}
+                    >
+                        Sign out
+                    </Button>
+                    {/* )} */}
+                </View>
             </View>
         </ScrollView>
     );

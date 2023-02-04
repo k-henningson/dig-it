@@ -42,7 +42,7 @@ export default function TestBarChart({ data, heading }) {
                 style={graphStyle}
                 data={data}
                 width={screenWidth - 20}
-                height={240}
+                height={230}
                 chartConfig={chartConfig}
                 showBarTops={false}
                 segments={2}
