@@ -11,24 +11,36 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 <table>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part1.gif?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part2.gif?raw=true"></td>
+    <td><img src=></td>
+    <td><img src=></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part3.gif?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part4.gif?raw=true"></td>
+    <td><img src=></td>
+    <td><img src=></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8128.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8131.PNG?raw=true"></td>
+    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyTests.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8132.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8129.PNG?raw=true"></td>
+    <td><img src=></td>
+    <td><img src=></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8130.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-43-implement-remaining-snowpack-test-options/docs/IMG_8154.PNG?raw=true"></td>
+    <td><img src=></td>
+    <td><img src=></td>
+  </tr>
+  <tr>
+    <td><img src=></td>
+    <td><img src=></td>
+  </tr>
+  <tr>
+    <td><img src=></td>
+    <td><img src=></td>
+  </tr>
+  <tr>
+    <td><img src=></td>
+    <td><img src=></td>
   </tr>
 </table>
 <br></br>
@@ -83,4 +95,3 @@ npm run start
 ```
 
 5. Scan the QR code in your terminal
- 
