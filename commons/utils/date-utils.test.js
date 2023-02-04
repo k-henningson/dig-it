@@ -23,8 +23,8 @@ describe('formatDate', () => {
 
     it('returns correctly formatted date for date string', () => {
         const formattedDate = formatDate({
-            toDate: () => new Date('01/01/23'),
+            toDate: () => new Date('02/01/23'),
         });
-        expect(formattedDate).toBe('Sunday, 1 Jan');
+        expect(formattedDate).toBe('Wednesday, 1 Feb');
     });
 });
