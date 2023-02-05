@@ -7,7 +7,7 @@ Dig It is a mobile app designed for backcountry skiers to assess and track avala
 
 <br></br>
 
-## Product - as of January 2022
+## Final Product
 
 <table>
   <tr>
