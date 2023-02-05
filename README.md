@@ -1,9 +1,9 @@
-# Dig It ❄️ - In progress (MVP estimated completion date: February 2023)
+# Dig It ❄️
 
-Dig It is a mobile app that assists backcountry skiers in assessing avalanche conditions by evaluating the snowpack. The goal of this project is to provide the backcountry community with a solution for recording snow pit data.
+Dig It is a mobile app designed for backcountry skiers to assess and track avalanche conditions. It allows users to record important data about the snowpack to help evaluate safety before touring.
 <br></br>
 
-### Contributors: [James Dowell](https://github.com/j-dowell) & [Kyra Henningson](https://github.com/k-henningson)
+### Contributors: [Kyra Henningson](https://github.com/k-henningson) & [James Dowell](https://github.com/j-dowell)
 
 <br></br>
 
@@ -11,24 +11,48 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 
 <table>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part1.gif?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part2.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part1.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part2.gif?raw=true"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part3.gif?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-45-history-page-modal/docs/Part4.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part3.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part4.gif?raw=true"></td>
+  </tr>
+   <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part5.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part6.gif?raw=true"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8128.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8131.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/welcomePage.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/signUp.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8132.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8129.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/profilePage.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyTests.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-39-add-photo-capture-upload-step/docs/IMG_8130.PNG?raw=true"></td>
-    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-43-implement-remaining-snowpack-test-options/docs/IMG_8154.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/testPage.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/tapTest.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/tapPicker.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/fractureType.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/weatherStep.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/snowConditions.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/title.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/location.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/imageStep.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/notes.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/success.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyModal.PNG?raw=true"></td>
   </tr>
 </table>
 <br></br>
@@ -39,11 +63,14 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 -   Firebase (Authentication & Firestore)
 -   Expo
 -   Expo Location
+-   Expo Haptics
 -   Native Base
 -   React Native Maps
 -   React Navigation
 -   React Native Reanimated
 -   Moti
+-   Jest
+-   GitHub actions (CI)
     <br></br>
 
 ### Dev Dependencies
@@ -83,4 +110,3 @@ npm run start
 ```
 
 5. Scan the QR code in your terminal
- 
