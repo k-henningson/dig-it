@@ -1,4 +1,4 @@
-# Dig It ❄️ - In progress (MVP estimated completion date: February 2023)
+# Dig It ❄️
 
 Dig It is a mobile app that assists backcountry skiers in assessing avalanche conditions by evaluating the snowpack. The goal of this project is to provide the backcountry community with a solution for recording snow pit data.
 <br></br>
@@ -16,11 +16,11 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
   </tr>
   <tr>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part3.gif?raw=true"></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part4.gif?raw=true"></td>
   </tr>
    <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part5.gif?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part6.gif?raw=true"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/welcomePage.PNG?raw=true"></td>
@@ -39,7 +39,7 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/fractureType.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=""></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/weatherStep.PNG?raw=true"></td>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/snowConditions.PNG?raw=true"></td>
   </tr>
   <tr>
@@ -47,7 +47,7 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/location.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=""></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/imageStep.PNG?raw=true"></td>
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/notes.PNG?raw=true"></td>
   </tr>
   <tr>
