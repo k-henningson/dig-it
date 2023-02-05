@@ -1,6 +1,6 @@
 # Dig It ❄️
 
-Dig It is a mobile app that assists backcountry skiers in assessing avalanche conditions by evaluating the snowpack. The goal of this project is to provide the backcountry community with a solution for recording snow pit data.
+Dig It is a mobile app designed for backcountry skiers to assess and track avalanche conditions. It allows users to record important data about the snowpack to help evaluate safety before touring.
 <br></br>
 
 ### Contributors: [James Dowell](https://github.com/j-dowell) & [Kyra Henningson](https://github.com/k-henningson)
