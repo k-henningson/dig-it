@@ -15,7 +15,7 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part2.gif?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/Part3.gif?raw=true"></td>
     <td><img src=></td>
   </tr>
    <tr>
@@ -31,20 +31,28 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
     <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyTests.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/testPage.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/tapTest.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/tapPicker.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/fractureType.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src=""></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/snowConditions.PNG?raw=true"></td>
   </tr>
   <tr>
-    <td><img src=></td>
-    <td><img src=></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/title.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/location.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src=""></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/notes.PNG?raw=true"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/success.PNG?raw=true"></td>
+    <td><img src="https://github.com/k-henningson/dig-it/blob/DIG-51-finish-readme/docs/historyModal.PNG?raw=true"></td>
   </tr>
 </table>
 <br></br>
