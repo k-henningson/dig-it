@@ -63,11 +63,14 @@ Dig It is a mobile app that assists backcountry skiers in assessing avalanche co
 -   Firebase (Authentication & Firestore)
 -   Expo
 -   Expo Location
+-   Expo Haptics
 -   Native Base
 -   React Native Maps
 -   React Navigation
 -   React Native Reanimated
 -   Moti
+-   Jest
+-   GitHub actions (CI)
     <br></br>
 
 ### Dev Dependencies
